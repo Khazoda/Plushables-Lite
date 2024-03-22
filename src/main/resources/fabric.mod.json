@@ -1,0 +1,52 @@
+{
+	"schemaVersion": 1,
+	"id": "plushables",
+	"version": "1.1.4",
+	"name": "Plushables Lite",
+	"description": "Craft cute plushies for your home",
+	"authors": [
+		"Khazoda | June"
+	],
+	"custom": {
+		"modmenu": {
+			"update_checker": true
+		}
+	},
+	"contributors": [
+		"Art - BumbleSculpts",
+		"Art - Luke",
+		"Code - glisco",
+		"Art - MerchantPug"
+	],
+	"contact": {
+		"homepage": "https://www.seacroak.com/projects/plushables",
+		"sources": "https://github.com/Khazoda/Plushables",
+		"issues": "https://github.com/Khazoda/Plushables/issues"
+	},
+	"license": "CC0 1.0 Universal with Commons Clause v1.0",
+	"icon": "assets/plushables/mod_icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.seacroak.plushables.PlushablesMod"
+		],
+		"client": [
+			"com.seacroak.plushables.PlushablesModClient"
+		],
+		"fabric-datagen": [
+			"com.seacroak.plushables.datagen.DataGenerator"
+		]
+	},
+	"mixins": [
+		"plushables.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.2",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
