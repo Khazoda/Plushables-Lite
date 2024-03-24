@@ -16,7 +16,7 @@ public final class MainRegistry {
   static final FabricItemSettings unstackableItemSettings = new FabricItemSettings().maxCount(1);
 
   /* Standard Blocks */
-//  public static final BuilderBlock BUILDER_BLOCK = registerBlock("builder_block", new BuilderBlock(), defaultItemSettings);
+  public static final BuilderBlock BUILDER_BLOCK = registerBlock("builder_block", new BuilderBlock(), defaultItemSettings);
   public static final BasketBlock BASKET_BLOCK = registerBlock("basket_block", new BasketBlock(), defaultItemSettings);
 
   /* Items */

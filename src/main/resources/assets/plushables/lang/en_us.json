@@ -1,7 +1,7 @@
 {
   "itemGroup.plushables.itemGroup": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es",
   "block.plushables.basket_block": "Plushable Basket",
-  "block.plushables.builder_block": "Plushable Builder",
+  "block.plushables.builder_block": "Broken Plushable Builder",
   "item.plushables.heart_of_gold": "§6Heart of Gold",
   "item.plushables.powered_heart": "§cPowered §6Heart of Gold",
   "block.plushables.codex": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es §cC§6o§ed§ae§bx",
@@ -47,6 +47,7 @@
   "block.plushables.walrus_plushable": "Plushable §bWalrus",
   "block.plushables.blahaj_plushable": "Plushable §9Blåhaj",
 
+  "block.plushables.builder.tooltip": "§7§oThe machine seems unfixable..",
   "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
   "block.plushables.froge.tooltip": "§eDelightful!§r",
 
