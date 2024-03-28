@@ -1,5 +1,6 @@
 package com.seacroak.plushables.item;
 
+import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.BasePlushable;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
@@ -8,6 +9,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -44,7 +46,7 @@ public class CodexItem extends BlockItem {
     ItemStack stack = player.getStackInHand(hand);
 
     if (player instanceof ServerPlayerEntity sp) {
-//      PatchouliAPI.get().openBookGUI(sp, new Identifier("plushables:codex"));
+      player.sendMessage(Text.translatable("block." + PlushablesMod.MOD_ID + ".codex.broken"));
     }
 
     if (world.isClient()) {

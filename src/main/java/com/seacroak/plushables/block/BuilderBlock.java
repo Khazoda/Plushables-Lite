@@ -42,7 +42,7 @@ public class BuilderBlock extends HorizontalFacingBlock {
   public ActionResult onUse(BlockState state, World world, BlockPos pos,
                             PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (world.isClient) {
-      player.sendMessage(Text.translatable("block." + PlushablesMod.MOD_ID + ".builder.tooltip"));
+      player.sendMessage(Text.translatable("block." + PlushablesMod.MOD_ID + ".builder.broken"));
     }
 
     return ActionResult.SUCCESS;

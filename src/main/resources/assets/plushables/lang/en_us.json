@@ -47,7 +47,9 @@
   "block.plushables.walrus_plushable": "Plushable §bWalrus",
   "block.plushables.blahaj_plushable": "Plushable §9Blåhaj",
 
-  "block.plushables.builder.tooltip": "§7§oThe machine seems unfixable..",
+  "block.plushables.builder.broken": "§7§oThe machine seems unfixable..",
+  "block.plushables.codex.broken": "§7§oThe pages are torn..",
+
   "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
   "block.plushables.froge.tooltip": "§eDelightful!§r",
 
