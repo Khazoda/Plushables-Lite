@@ -1,0 +1,17 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:seagrass"
+    },
+    {
+      "item": "minecraft:cyan_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "result": {
+    "item": "plushables:sea_bunny_plushable"
+  }
+}

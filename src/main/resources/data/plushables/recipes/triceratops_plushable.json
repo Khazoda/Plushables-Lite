@@ -1,0 +1,17 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:fern"
+    },
+    {
+      "item": "minecraft:green_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "result": {
+    "item": "plushables:triceratops_plushable"
+  }
+}

@@ -1,10 +1,10 @@
 {
   "itemGroup.plushables.itemGroup": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es",
   "block.plushables.basket_block": "Plushable Basket",
-  "block.plushables.builder_block": "Broken Plushable Builder",
+  "block.plushables.builder_block": "§7§oBroken Plushable Builder",
   "item.plushables.heart_of_gold": "§6Heart of Gold",
   "item.plushables.powered_heart": "§cPowered §6Heart of Gold",
-  "block.plushables.codex": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es §cC§6o§ed§ae§bx",
+  "block.plushables.codex": "§7§oPlushables Codex",
   "block.plushables.penguin_plushable": "Plushable §7Penguin§r",
   "block.plushables.fox_plushable": "Plushable §6Fox§r",
   "block.plushables.froglin_plushable": "Plushable §2Froglin§r",
@@ -48,7 +48,9 @@
   "block.plushables.blahaj_plushable": "Plushable §9Blåhaj",
 
   "block.plushables.builder.broken": "§7§oThe machine seems unfixable..",
+
   "block.plushables.codex.broken": "§7§oThe pages are torn..",
+  "item.plushables.codex.broken": "§7§oUnusable",
 
   "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
   "block.plushables.froge.tooltip": "§eDelightful!§r",

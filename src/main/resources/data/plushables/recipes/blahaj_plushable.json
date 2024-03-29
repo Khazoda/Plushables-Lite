@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:pink_petals"
+    },
+    {
+      "item": "minecraft:light_blue_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "result": {
+    "item": "plushables:blahaj_plushable"
+  }
+}

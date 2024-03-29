@@ -4,9 +4,6 @@ import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
-import com.seacroak.plushables.registry.uncommon.TileRegistry;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -16,7 +13,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public class DragonBlock extends BaseInteractablePlushable {
 

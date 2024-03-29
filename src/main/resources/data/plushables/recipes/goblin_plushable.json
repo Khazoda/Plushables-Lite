@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:lime_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "result": {
+    "item": "plushables:goblin_plushable"
+  }
+}

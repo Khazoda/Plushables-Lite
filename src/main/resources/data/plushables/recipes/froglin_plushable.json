@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:lily_pad"
+    },
+    {
+      "item": "minecraft:green_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "result": {
+    "item": "plushables:froglin_plushable"
+  }
+}

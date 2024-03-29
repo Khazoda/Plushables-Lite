@@ -4,12 +4,12 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [],
 	"client": [
-		"PlayerEntityRendererMixin",
-		"BipedEntityModelMixin",
-		"ItemRendererAccessor",
-		"ItemRendererMixin",
-		"ModelLoaderMixin"
-	],
+      "BipedEntityModelMixin",
+      "ItemRendererAccessor",
+      "ItemRendererMixin",
+      "ModelLoaderMixin",
+      "PlayerEntityRendererMixin"
+    ],
 	"injectors": {
 		"defaultRequire": 1
 	}

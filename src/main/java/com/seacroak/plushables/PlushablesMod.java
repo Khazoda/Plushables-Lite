@@ -7,7 +7,6 @@ import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import com.seacroak.plushables.util.GenericUtils;
 import net.fabricmc.api.ModInitializer;
-
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

@@ -1,0 +1,17 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:purple_wool"
+    },
+    {
+      "item": "plushables:powered_heart"
+    }
+  ],
+  "result": {
+    "item": "plushables:wizard_plushable"
+  }
+}

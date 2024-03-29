@@ -4,6 +4,7 @@ import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.BasePlushable;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
@@ -12,10 +13,13 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class CodexItem extends BlockItem {
 
@@ -54,5 +58,11 @@ public class CodexItem extends BlockItem {
     } else {
       return TypedActionResult.consume(stack);
     }
+  }
+
+  @Override
+  public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    tooltip.add(Text.translatable("item." + PlushablesMod.MOD_ID + ".codex.broken"));
+    super.appendTooltip(stack, world, tooltip, context);
   }
 }
