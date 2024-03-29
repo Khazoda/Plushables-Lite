@@ -25,8 +25,6 @@ public final class PlushablesModClient implements ClientModInitializer {
   @Override
   @Environment(EnvType.CLIENT)
   public void onInitializeClient() {
-//    ScreenRegistry.initClient();
-//    TileRegistryClient.initClient();
     EntityRendererRegistry.initClient();
 
     /* Functional Transparency*/

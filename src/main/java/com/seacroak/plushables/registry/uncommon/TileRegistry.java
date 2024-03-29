@@ -10,12 +10,8 @@ import net.minecraft.registry.Registry;
 
 
 public final class TileRegistry {
-
-
 	public static final BlockEntityType<BasketBlockEntity> BASKET_TILE = Registry.register(
 			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":basket_block_entity",
 			FabricBlockEntityTypeBuilder.create(BasketBlockEntity::new,
 					MainRegistry.BASKET_BLOCK).build(null));
-
-
 }
