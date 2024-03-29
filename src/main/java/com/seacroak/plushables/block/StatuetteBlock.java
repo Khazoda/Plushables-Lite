@@ -25,7 +25,12 @@ public class StatuetteBlock extends BaseInteractablePlushable {
 
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0, 0.25, 0.75, 0.8125, 0.625));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.5, 0, 0.40625, 0.59375, 0.28125, 0.5));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.40625, 0.28125, 0.3828, 0.59375, 0.5625, 0.5234));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.59375, 0.28125, 0.40625, 0.6875, 0.5625, 0.5));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.3125, 0.28125, 0.40625, 0.40625, 0.5625, 0.5));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.40625, 0, 0.40625, 0.5, 0.28125, 0.5));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.40625, 0.5625, 0.3828, 0.59375, 0.75, 0.5234));
     return shape;
   }
 
