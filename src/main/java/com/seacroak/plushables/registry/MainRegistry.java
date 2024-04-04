@@ -1,7 +1,9 @@
 package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.block.*;
+import com.seacroak.plushables.item.CapArmorItem;
 import com.seacroak.plushables.item.CodexItem;
+import com.seacroak.plushables.item.FroglinCapItem;
 import com.seacroak.plushables.util.RegistryHelper;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
@@ -75,7 +77,7 @@ public final class MainRegistry {
 
 
   /* Caps */
-//  public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCapItem());
+  public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCapItem());
 //  public static final Item FOX_CAP = registerCap("cap_fox", new FoxCapItem());
 //  public static final Item UNICORN_CAP = registerCap("cap_unicorn", new UnicornCapItem());
 //  public static final Item MUSHROOM_CAP = registerCap("cap_mushroom", new MushroomCapItem());
@@ -113,8 +115,8 @@ public final class MainRegistry {
   }
 
 
-//  private static Item registerCap(String name, CapArmorItem capType) {
-//    return RegistryHelper.registerItem(name, capType);
-//  }
+  private static Item registerCap(String name, CapArmorItem capType) {
+    return RegistryHelper.registerItem(name, capType);
+  }
 
 }

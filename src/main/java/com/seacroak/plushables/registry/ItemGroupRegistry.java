@@ -60,7 +60,7 @@ public class ItemGroupRegistry {
 
 
           // Caps
-//          entries.add(new ItemStack(MainRegistry.FROGLIN_CAP));
+          entries.add(new ItemStack(MainRegistry.FROGLIN_CAP));
 //          entries.add(new ItemStack(MainRegistry.FOX_CAP));
 //          entries.add(new ItemStack(MainRegistry.UNICORN_CAP));
 //          entries.add(new ItemStack(MainRegistry.MUSHROOM_CAP));
