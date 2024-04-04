@@ -122,7 +122,7 @@
 			"name": "Head",
 			"from": [6.5, 5, 4.5],
 			"to": [9.5, 8, 8],
-			"rotation": {"angle": 0, "axis": "x", "origin": [1.5, 1.5, 0.75]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [1.5, 1.5, 0.75]},
 			"faces": {
 				"north": {"uv": [0.25, 5.5, 1.75, 7], "texture": "#0"},
 				"east": {"uv": [2.25, 0, 4, 1.5], "texture": "#0"},
@@ -134,9 +134,9 @@
 		},
 		{
 			"name": "mane",
-			"from": [5.75, 4.5, 5.25],
-			"to": [10.25, 9.25, 5.25],
-			"rotation": {"angle": 0, "axis": "z", "origin": [9.25, 8.25, 5.25]},
+			"from": [5.75, 4.5, 5.5],
+			"to": [10.25, 9.25, 5.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9.25, 8.25, 5.25]},
 			"faces": {
 				"north": {"uv": [8, 0, 10.25, 2.375], "texture": "#0"},
 				"east": {"uv": [0, 0, 0, 0], "texture": "#0"},
@@ -150,7 +150,7 @@
 			"name": "whiskers",
 			"from": [6, 5, 4],
 			"to": [10, 7.5, 4],
-			"rotation": {"angle": 0, "axis": "z", "origin": [8, 6.25, 4]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6.25, 4]},
 			"faces": {
 				"north": {"uv": [8, 2.5, 10, 3.75], "texture": "#0"},
 				"south": {"uv": [10, 2.5, 8, 3.75], "texture": "#0"}
@@ -160,7 +160,7 @@
 			"name": "Snout",
 			"from": [7.25, 6, 3],
 			"to": [8.75, 6.75, 5],
-			"rotation": {"angle": 0, "axis": "x", "origin": [8, 6, 5]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 5]},
 			"faces": {
 				"north": {"uv": [0.5, 5, 1.25, 5.375], "texture": "#0"},
 				"east": {"uv": [0.25, 2, 1.25, 2.375], "texture": "#0"},
@@ -174,7 +174,7 @@
 			"name": "Snout",
 			"from": [7.25, 5.5, 3],
 			"to": [8.75, 6, 5],
-			"rotation": {"angle": 0, "axis": "x", "origin": [8, 6, 5]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 5]},
 			"faces": {
 				"north": {"uv": [0.5, 7.5, 1.25, 7.75], "texture": "#0"},
 				"east": {"uv": [0.25, 7.25, 1.25, 7.5], "texture": "#0"},
