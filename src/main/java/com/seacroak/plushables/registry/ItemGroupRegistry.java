@@ -57,6 +57,7 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.TIGER_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.WALRUS_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.BLAHAJ_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.WISP_PLUSHABLE));
 
 
           // Caps
