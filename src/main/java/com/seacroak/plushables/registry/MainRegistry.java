@@ -1,7 +1,7 @@
 package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.block.*;
-import com.seacroak.plushables.block.plushie.*;
+import com.seacroak.plushables.block.plushable.*;
 import com.seacroak.plushables.item.*;
 import com.seacroak.plushables.util.RegistryHelper;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
