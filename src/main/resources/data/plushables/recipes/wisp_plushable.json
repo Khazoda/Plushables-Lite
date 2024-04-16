@@ -5,10 +5,10 @@
       "item": "minecraft:echo_shard"
     },
     {
-      "item": "minecraft:blue_wool"
+      "item": "minecraft:light_blue_wool"
     },
     {
-      "item": "plushables:heart_of_gold"
+      "item": "plushables:powered_heart"
     }
   ],
   "result": {
