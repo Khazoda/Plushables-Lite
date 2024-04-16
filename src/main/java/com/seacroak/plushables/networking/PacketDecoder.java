@@ -48,6 +48,7 @@ public class PacketDecoder {
       case "minecraft:fishing": returnValue = ParticleTypes.FISHING; break;
       case "minecraft:mycelium": returnValue = ParticleTypes.MYCELIUM; break;
       case "minecraft:wax_on": returnValue = ParticleTypes.WAX_ON; break;
+      case "minecraft:end_rod": returnValue = ParticleTypes.END_ROD; break;
 
       default: returnValue = ParticleTypes.SCULK_SOUL;
     }
