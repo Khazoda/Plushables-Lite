@@ -58,6 +58,8 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.WALRUS_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.BLAHAJ_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.WISP_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.COOPER_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.ZIGGY_PLUSHABLE));
 
 
           // Caps

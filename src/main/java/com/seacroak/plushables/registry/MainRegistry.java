@@ -74,6 +74,8 @@ public final class MainRegistry {
   public static final WalrusBlock WALRUS_PLUSHABLE = registerPlushable("walrus_plushable", new WalrusBlock(), plushableItemSettings);
   public static final BlahajBlock BLAHAJ_PLUSHABLE = registerPlushable("blahaj_plushable", new BlahajBlock(), plushableItemSettings);
   public static final WispBlock WISP_PLUSHABLE = registerPlushable("wisp_plushable", new WispBlock(), plushableItemSettings);
+  public static final CooperBlock COOPER_PLUSHABLE = registerPlushable("cooper_plushable", new CooperBlock(), plushableItemSettings);
+  public static final ZiggyBlock ZIGGY_PLUSHABLE = registerPlushable("ziggy_plushable", new ZiggyBlock(), plushableItemSettings);
 
 
   /* Caps */
