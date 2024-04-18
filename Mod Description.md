@@ -1,40 +1,35 @@
-![Plushables Banner](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/banner_2024_0_dark.png?raw=true)
+![Plushables Banner](https://github.com/Khazoda/plushables-lite/blob/Web-Assets/description_lite/lite_logo_wide_dark.png?raw=true)
 
-# Important 🐻
+# Why Plushables _Lite_? 🦧
 
-Plushables is a mod that works with *Fabric* and *Quilt*. You will *need* to download the following:  
-| Using Fabric | [Fabric API](https://legacy.curseforge.com/minecraft/mc-mods/fabric-api) | [GeckoLib](https://legacy.curseforge.com/minecraft/mc-mods/geckolib) | [Patchouli](https://legacy.curseforge.com/minecraft/mc-mods/patchouli-fabric) |
-| ----- | ----- | ----- | ----- |
-| Using Quilt | [Quilted Fabric API](https://legacy.curseforge.com/minecraft/mc-mods/qsl) | [GeckoLib](https://legacy.curseforge.com/minecraft/mc-mods/geckolib) | [Patchouli](https://legacy.curseforge.com/minecraft/mc-mods/patchouli-fabric) |
+- Plushables is a feature-rich plushie mod. It relies on multiple third party libraries to work.
+- These libraries often take time to update to new versions of Minecraft when they're released.
+- This pushes back Plushables' release date for each version.
 
-# About 🦣
+**So, Plushables _Lite_ doesn't have any dependencies, will update quickly to each new version of Minecraft, and will receive Plushables content before the bigger Plushables mod?**
 
-Plushables adds many new decorative blocks that are crafted within a new crafting interface, the Plushable Builder.  
-These 'plushables' can have sound and particle effects on interaction, as well as animations.
-![highlight](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/highlight.png?raw=true)
+_Yes, yes and yes_.
+
+Plushables _Lite_ exists as a functionally lightweight alternative to Plushables. Of course this means that some more complex features are cut for this version of the mod. See the _Cut Content_ section further down to see the differences.
+
+🧨 If you'd rather install Plushables with all its bells and whistles, head over to [Plushables Modrinth](https://modrinth.com/mod/plushables) and follow that description for installation instructions.
+
+# That sounds good, but how do I install it? 🐸
+
+Unlike Plushables, Plushables _Lite_ is incredibly easy to install. It has no dependencies you need to download, so just download a version of this mod for your Minecraft version, make sure Fabric or Quilt is installed, and play!
 
 # Getting Started 📖
 
-- Pick up a copper ingot to unlock the recipe for the Plushable Builder in your recipe book, a block that is used to craft every plushable.
-- Once you've crafted the builder you will be granted the Plushable Codex, a book item that details the recipes of every plush.
-- Every plushable needs either a Heart of Gold or a Powered Heart of Gold. Both recipes can be found in your recipe book at the same time you unlock the builder recipe.
-  ![Crafting recipe](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/crafting.png?raw=true)
-
-# Optional Mods 🌻
-
-Plushables has optional features that you may want to use. To unlock everything this mod has to offer, consider downloading any of the mods below to use in your game.
-
-- [EMI](https://www.curseforge.com/minecraft/mc-mods/emi) OR [REI](https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items) - Both of these mods fulfil similar functions, and you should only install one of them. Recipe viewer mods such as EMI and REI allow you to see a searchable list of every item in the game. This includes plushables and their recipes in the plushable builder.
-- [Bovines and Buttercups](https://www.curseforge.com/minecraft/mc-mods/bovines-and-buttercups) - This content mod adds mooblooms to your world. With it installed, you can unlock a new texture for the moobloom plushable by enabling a built-in resource pack!
+Plushables _Lite_ does away with the Builder block, and instead lets you craft plushies straight from a crafting table. Make some Hearts of Gold and start crafting! All plushie recipes are unlocked in your vanilla Minecraft recipe book once you craft a Heart of Gold - alternatively use a recipe viewer mod like EMI, REI or JEI to search up the recipes you want.
 
 # Frequently Asked Questions (FAQ) 🧡
 
 - Is there a forge version?  
-  _`Currently there is no forge version. It is planned, but don't expect it any time soon.`_
+  _`There will never be a forge version of Plushables. If you would like to port the mod yourself, both Plushables and Plushables Lite have licenses that allow that.`_
 - Can you backport the mod to Minecraft 1.X.X?  
-  _`Unfortunately I don't have the time to backport Plushables to earlier versions. The mod will however support each new version of Minecraft.`_
+  _`Unfortunately I don't have the time to backport Plushables Lite to earlier versions. The mod will however support each new version of Minecraft.`_
 - I found a bug / my game crashed  
-  _`If you find any problems with Plushables, please feel encouraged to create an issue on the GitHub repository issue tracker. Bug reports are incredibly helpful, and help make Plushables the best it can be.`_
+  _`If you find any problems with Plushables Lite, please feel encouraged to create an issue on the GitHub repository issue tracker. Bug reports are incredibly helpful, and help make Plushables Lite the best it can be.`_
 
 ![divider](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/divider.png?raw=true)
 ![footer](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/footer.png?raw=true)
