@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "plushables",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"name": "Plushables Lite",
 	"description": "Craft cute plushies for your home",
 	"authors": [
@@ -23,7 +23,7 @@
 		"sources": "https://github.com/Khazoda/Plushables",
 		"issues": "https://github.com/Khazoda/Plushables/issues"
 	},
-	"license": "CC0 1.0 Universal with Commons Clause v1.0",
+	"license": "GNU General Public License v3.0",
 	"icon": "assets/plushables/mod_icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -41,7 +41,7 @@
 		"plushables.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.15.7",
+		"fabricloader": ">=0.15.10",
 		"minecraft": "~1.20.2",
 		"java": ">=17",
 		"fabric-api": "*"

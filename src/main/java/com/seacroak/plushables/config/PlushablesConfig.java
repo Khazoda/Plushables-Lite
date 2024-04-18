@@ -4,7 +4,7 @@ import eu.midnightdust.lib.config.MidnightConfig;
 
 public class PlushablesConfig extends MidnightConfig {
 
-  @Comment(centered = true) public static Comment title;
+//  @Comment(centered = true) public static Comment title;
 
   @Comment public static Comment betaWarning;
   @Comment public static Comment spacer;

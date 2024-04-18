@@ -1,24 +1,30 @@
 package com.seacroak.plushables.block.plushable;
 
+import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.BaseInteractablePlushable;
-import com.seacroak.plushables.block.BasePlushable;
 import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class WispBlock extends BaseInteractablePlushable {
   public WispBlock() {
@@ -47,5 +53,11 @@ public class WispBlock extends BaseInteractablePlushable {
     PlushablesNetworking.playSoundOnClient(SoundEvents.BLOCK_AMETHYST_BLOCK_RESONATE, world, pos, 1f, 1f);
     PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.END_ROD, world, pos, 5, new Vec3d(0, -0.1, 0), 0.1f);
     return ActionResult.SUCCESS;
+  }
+
+  @Override
+  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+    tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".wisp.tooltip"));
+    super.appendTooltip(stack, world, tooltip, options);
   }
 }
