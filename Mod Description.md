@@ -26,6 +26,36 @@ Plushables _Lite_ does away with the Builder block, and instead lets you craft p
 
 # Cut Content ⚙️
 
+So, the big question - what features does Plushables have that Plushables _Lite_ doesn't?
+
+| Plushables                                                  | Plushables _Lite_                                  |
+| ----------------------------------------------------------- | -------------------------------------------------- |
+| 🟢 Custom recipe crafting with Plushable Builder            | 🔴 Standard Minecraft crafting table crafting      |
+| 🟢 Fully animated interactable plushies                     | 🟡 Partly Interactable plushies without animations |
+| 🟢 Codex listing information about the mod and each plushie | 🔴 Unusable codex item                             |
+| 🟢 Custom 3D modelled plushie hats                          | 🟡 Plushie hats use default Minecraft helmet space |
+
+Though the list of feature removals seems high, Plushables _Lite_ is still a fully-fledged experience.
+
+# Transition existing world to or from Plushables 🌏
+
+Although it is not strictly recommended, it _is_ possible to change your world from Plushables to Plushables Lite or vice versa. This change is tested on every new version, but no guarantees can be made, so **!!BACK UP YOUR WORLD!!** before trying this.
+
+Do the following steps _before_ changing from one mod to another in your world to make the transition as smooth as possible:
+
+## Plushables → Plushables _Lite_
+
+- Take items out of Plushable Builders **before** swapping to Plushables _Lite_ (items will be lost otherwise)
+- ALWAYS make a world backup incase things go wrong
+- Swap Plushables mod jar file for Plushables _Lite_ mod jar file
+
+## Plushables _Lite_ → Plushables
+
+- ALWAYS make a world backup incase things go wrong
+- Take note of where your powered plushables are - they will appear invisible after swapping mods, and will be hard to find otherwise.
+- Swap Plushables _Lite_ mod jar file for Plushables mod jar file
+- Right click powered plushables (will be invisible on first world load after mod change)
+
 # Frequently Asked Questions (FAQ) 🧡
 
 - Is there a forge version?  
