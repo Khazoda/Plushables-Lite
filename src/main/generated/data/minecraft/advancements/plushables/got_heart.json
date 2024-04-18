@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:plushables/got_builder",
+  "parent": "minecraft:plushables/got_gold_ingot",
   "criteria": {
     "got_heart": {
       "conditions": {
@@ -34,5 +34,61 @@
       "got_heart"
     ]
   ],
+  "rewards": {
+    "recipes": [
+      "plushables:heart_of_gold",
+      "plushables:penguin_plushable",
+      "plushables:froglin_plushable",
+      "plushables:fox_plushable",
+      "plushables:pig_plushable",
+      "plushables:truffles_plushable",
+      "plushables:djungelskog_plushable",
+      "plushables:rattiam_plushable",
+      "plushables:triceratops_plushable",
+      "plushables:unicorn_plushable",
+      "plushables:whelpling_plushable",
+      "plushables:raptor_plushable",
+      "plushables:wizard_plushable",
+      "plushables:beaux_plushable",
+      "plushables:goblin_plushable",
+      "plushables:big_tater_plushable",
+      "plushables:big_irritater_plushable",
+      "plushables:otter_plushable",
+      "plushables:shrump_plushable",
+      "plushables:octoplush_plushable",
+      "plushables:snail_plushable",
+      "plushables:whale_plushable",
+      "plushables:goldfish_plushable",
+      "plushables:trater_plushable",
+      "plushables:conductor_plushable",
+      "plushables:capybara_plushable",
+      "plushables:animatronic_plushable",
+      "plushables:moobloom_plushable",
+      "plushables:froge_plushable",
+      "plushables:hampter_plushable",
+      "plushables:dormouse_plushable",
+      "plushables:sea_bunny_plushable",
+      "plushables:mammoth_plushable",
+      "plushables:tiger_plushable",
+      "plushables:walrus_plushable",
+      "plushables:blahaj_plushable",
+      "plushables:wisp_plushable",
+      "plushables:cooper_plushable",
+      "plushables:ziggy_plushable",
+      "plushables:potsy_plushable",
+      "plushables:clucky_plushable",
+      "plushables:rupert_plushable",
+      "plushables:dragon_plushable",
+      "plushables:orangutan_plushable",
+      "plushables:owl_plushable",
+      "plushables:statuette_plushable",
+      "plushables:cap_froglin",
+      "plushables:cap_fox",
+      "plushables:cap_unicorn",
+      "plushables:cap_mushroom",
+      "plushables:cap_beaux",
+      "plushables:cap_truffles"
+    ]
+  },
   "sends_telemetry_event": true
 }

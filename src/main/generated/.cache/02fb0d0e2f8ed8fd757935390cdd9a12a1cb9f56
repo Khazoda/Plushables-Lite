@@ -1,4 +1,4 @@
-// 1.20.2	2024-04-18T20:28:38.4101965	Plushables Lite/Block Loot Tables
+// 1.20.2	2024-04-18T23:07:26.224629	Plushables Lite/Block Loot Tables
 f784000e859b332885aad44ff60d66a284f4cdc6 data\plushables\loot_tables\blocks\big_irritater_plushable.json
 e706fc9f674ed095f5fdd20b92afa77e531aed55 data\plushables\loot_tables\blocks\triceratops_plushable.json
 dd5efbf6c3d8138f75062c7dfb623c3c1ccbcdf4 data\plushables\loot_tables\blocks\builder_block.json
@@ -18,8 +18,8 @@ a53fbd649d5a4371be95e7ec6aa71e480561b4bb data\plushables\loot_tables\blocks\truf
 9f7bd09397577da8c9c70151157d3be0431852ca data\plushables\loot_tables\blocks\codex.json
 f0fd616aa51c76bbcb804bc6d497cb74d79f6c86 data\plushables\loot_tables\blocks\trater_plushable.json
 d50103f91e2aad6262b0416568eb3e935c66acdd data\plushables\loot_tables\blocks\orangutan_plushable.json
-6d9f33575daf8e23ac60230c1aa7212ece15cba5 data\plushables\loot_tables\blocks\penguin_plushable.json
 8d6a51e77523581c538efa228bf66fed36e8865e data\plushables\loot_tables\blocks\potsy_plushable.json
+6d9f33575daf8e23ac60230c1aa7212ece15cba5 data\plushables\loot_tables\blocks\penguin_plushable.json
 27ac4698b63d7365761088e01b192ddd5ee6e67d data\plushables\loot_tables\blocks\fox_plushable.json
 8fcd91b1c4bb7c9eed98ad0a51bf5baeb9bc83d9 data\plushables\loot_tables\blocks\beaux_plushable.json
 310e6757557f3e44550ae48e443f589f19e362ce data\plushables\loot_tables\blocks\goblin_plushable.json
@@ -28,8 +28,8 @@ edac53d44f6208465b90f25e6a6091b5abd142ee data\plushables\loot_tables\blocks\stat
 3cfdb465bfe906fcd97475ab893e2cfaa7cb2e7d data\plushables\loot_tables\blocks\cooper_plushable.json
 299ecd0eaab98b6ec2f16ec4fd3368fcf0437ce3 data\plushables\loot_tables\blocks\tiger_plushable.json
 a54b00e48072d981ab025c97b06b75b09c309941 data\plushables\loot_tables\blocks\shrump_plushable.json
-e533a287fd53d1d3e1678f377a6013413060658a data\plushables\loot_tables\blocks\owl_plushable.json
 12817a1bc07f48a675f74382211c4eb0ab251f2f data\plushables\loot_tables\blocks\capybara_plushable.json
+e533a287fd53d1d3e1678f377a6013413060658a data\plushables\loot_tables\blocks\owl_plushable.json
 794e06f6bdfd80da302f12bb42e29d33411a3a26 data\plushables\loot_tables\blocks\big_tater_plushable.json
 235f1f7b8a5c2570e528b0b64f37c63b5e2b51c3 data\plushables\loot_tables\blocks\rattiam_plushable.json
 0d3a96c363a305c920459ef85d5f3f528480efa1 data\plushables\loot_tables\blocks\rupert_plushable.json

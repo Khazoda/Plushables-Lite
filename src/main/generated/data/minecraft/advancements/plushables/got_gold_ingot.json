@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:plushables/root",
+  "criteria": {
+    "got_gold_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:gold_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancement.plushables.got_gold_ingot.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:gold_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.plushables.got_gold_ingot.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_gold_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "plushables:heart_of_gold",
+      "plushables:powered_heart"
+    ]
+  },
+  "sends_telemetry_event": true
+}
