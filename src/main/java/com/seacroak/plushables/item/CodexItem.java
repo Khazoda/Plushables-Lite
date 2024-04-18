@@ -62,6 +62,7 @@ public class CodexItem extends BlockItem {
 
   @Override
   public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    tooltip.add(Text.translatable("item." + PlushablesMod.MOD_ID + ".codex.tooltip"));
     tooltip.add(Text.translatable("item." + PlushablesMod.MOD_ID + ".codex.broken"));
     super.appendTooltip(stack, world, tooltip, context);
   }
