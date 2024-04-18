@@ -1,0 +1,37 @@
+# gradle
+
+.gradle/
+build/
+out/
+classes/
+compiler_output/
+
+# eclipse
+
+*.launch
+
+# idea
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# macos
+
+*.DS_Store
+
+# fabric
+
+run/
+
+# Affinity
+Lite_Assets.afdesign~lock~
