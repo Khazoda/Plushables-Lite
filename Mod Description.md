@@ -22,6 +22,10 @@ Unlike Plushables, Plushables _Lite_ is incredibly easy to install. It has no de
 
 Plushables _Lite_ does away with the Builder block, and instead lets you craft plushies straight from a crafting table. Make some Hearts of Gold and start crafting! All plushie recipes are unlocked in your vanilla Minecraft recipe book once you craft a Heart of Gold - alternatively use a recipe viewer mod like EMI, REI or JEI to search up the recipes you want.
 
+![heart of gold recipe](https://github.com/Khazoda/plushables-lite/blob/Web-Assets/description_lite/heart_of_gold_recipe.gif?raw=true)
+
+# Cut Content ⚙️
+
 # Frequently Asked Questions (FAQ) 🧡
 
 - Is there a forge version?  
@@ -30,6 +34,3 @@ Plushables _Lite_ does away with the Builder block, and instead lets you craft p
   _`Unfortunately I don't have the time to backport Plushables Lite to earlier versions. The mod will however support each new version of Minecraft.`_
 - I found a bug / my game crashed  
   _`If you find any problems with Plushables Lite, please feel encouraged to create an issue on the GitHub repository issue tracker. Bug reports are incredibly helpful, and help make Plushables Lite the best it can be.`_
-
-![divider](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/divider.png?raw=true)
-![footer](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/footer.png?raw=true)
