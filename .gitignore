@@ -34,5 +34,4 @@ bin/
 run/
 
 # Affinity
-Lite_Assets.afdesign~lock~
-In-Game-Screenshots.afdesign~lock~
+*.afdesign~lock~
