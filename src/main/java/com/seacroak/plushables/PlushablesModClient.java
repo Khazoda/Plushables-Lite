@@ -13,10 +13,16 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.ClickEvent;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 
 public final class PlushablesModClient implements ClientModInitializer {
@@ -56,11 +62,27 @@ public final class PlushablesModClient implements ClientModInitializer {
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.CLUCKY_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.DRAGON_PLUSHABLE, RenderLayer.getCutout());
 
+    /* Clientside Commands */
+    ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess)
+            -> dispatcher.register(ClientCommandManager.literal("plushables")
+            .executes(context -> {
+                  context.getSource().sendFeedback(Text.translatable("command.plushables.root"));
+                  return 1;
+                }
+            )
+            .then(ClientCommandManager.literal("wiki")
+                .executes(context -> {
+                  context.getSource().sendFeedback(Text.translatable("command.plushables.wiki").setStyle(Style.EMPTY.withColor(Formatting.BLUE).withUnderline(true).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,"https://plushables.khazoda.com"))));
+                  return 1;
+                })
+            )
+        )
+    );
 
     /* Config Sync Networking Packet Client Receipt */
     ClientPlayNetworking.registerGlobalReceiver(ConfigPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
       var packet = ConfigPacket.read(buf);
-      if(client == null) return;
+      if (client == null) return;
       client.execute(() -> {
         PlushablesNetworking.priorityConfig(packet.enable_basket, packet.allow_all_block_items_in_baskets);
       });
@@ -70,7 +92,9 @@ public final class PlushablesModClient implements ClientModInitializer {
     ClientPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_PLAYER, ((client, handler, buf, responseSender) -> {
       var packet = PlayerSoundPacket.read(buf);
       SoundEvent decodedSoundEvent = PacketDecoder.decodeSoundEvent(packet.soundIdentifier);
-      if(client == null) return;
+      if (client == null) return;
+
+      assert client.player != null;
       if (packet.player == client.player.getUuid())
         return;
       client.execute(() -> {
@@ -85,7 +109,7 @@ public final class PlushablesModClient implements ClientModInitializer {
     ClientPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_NO_PLAYER, ((client, handler, buf, responseSender) -> {
       var packet = NoPlayerSoundPacket.read(buf);
       SoundEvent decodedSoundEvent = PacketDecoder.decodeSoundEvent(packet.soundIdentifier);
-      if(client == null) return;
+      if (client == null) return;
       client.execute(() -> {
         if (client.world == null)
           return;
@@ -97,7 +121,9 @@ public final class PlushablesModClient implements ClientModInitializer {
     ClientPlayNetworking.registerGlobalReceiver(ParticlePacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
       var packet = ParticlePacket.read(buf);
       ParticleEffect decodedParticles = PacketDecoder.decodeParticle(packet.particleIdentifier);
-      if(client == null) return;
+      if (client == null) return;
+
+      assert client.player != null;
       if (packet.player == client.player.getUuid())
         return;
       client.execute(() -> {
@@ -111,7 +137,9 @@ public final class PlushablesModClient implements ClientModInitializer {
     /* Animation Event Networking Packet Client Receipt */
     ClientPlayNetworking.registerGlobalReceiver(AnimationPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
       var packet = AnimationPacket.read(buf);
-      if(client == null) return;
+      if (client == null) return;
+
+      assert client.player != null;
       if (packet.player == client.player.getUuid())
         return;
       client.execute(() -> {
@@ -121,5 +149,7 @@ public final class PlushablesModClient implements ClientModInitializer {
 
       });
     }));
+
+
   }
 }

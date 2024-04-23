@@ -1,5 +1,6 @@
 package com.seacroak.plushables.block;
 
+import com.mojang.serialization.MapCodec;
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.util.VoxelShapeUtils;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -57,8 +58,9 @@ public class BuilderBlock extends HorizontalFacingBlock {
 //  }
 
   @Override
-  public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+  public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
     super.onBreak(world, pos, state, player);
+    return state;
   }
 
 //  @Override
@@ -105,4 +107,8 @@ public class BuilderBlock extends HorizontalFacingBlock {
     builder.add(FACING);
   }
 
+  @Override
+  protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
+    return null;
+  }
 }
