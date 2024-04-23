@@ -13,10 +13,16 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.ClickEvent;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 
 public final class PlushablesModClient implements ClientModInitializer {
@@ -56,6 +62,22 @@ public final class PlushablesModClient implements ClientModInitializer {
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.CLUCKY_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.DRAGON_PLUSHABLE, RenderLayer.getCutout());
 
+    /* Clientside Commands */
+    ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess)
+            -> dispatcher.register(ClientCommandManager.literal("plushables")
+            .executes(context -> {
+                  context.getSource().sendFeedback(Text.translatable("command.plushables.root"));
+                  return 1;
+                }
+            )
+            .then(ClientCommandManager.literal("wiki")
+                .executes(context -> {
+                  context.getSource().sendFeedback(Text.translatable("command.plushables.wiki").setStyle(Style.EMPTY.withColor(Formatting.BLUE).withUnderline(true).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,"https://plushables.khazoda.com"))));
+                  return 1;
+                })
+            )
+        )
+    );
 
     /* Config Sync Networking Packet Client Receipt */
     ClientPlayNetworking.registerGlobalReceiver(ConfigPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
