@@ -36,7 +36,7 @@ public class PlushablesMod implements ModInitializer {
 		PlushablesNetworking.registerGlobalSoundPacketReceiverWithoutPlayer();
 		PlushablesNetworking.registerGlobalParticlePacketReceiver();
 		PlushablesNetworking.registerGlobalAnimationPacketReceiver();
-
+		
 		LOGGER.info("[Plushables] Finished loading!");
 	}
 }

@@ -6,6 +6,7 @@ import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,6 +19,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -27,8 +29,19 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class WispBlock extends BaseInteractablePlushable {
+
   public WispBlock() {
     super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(14).pistonBehavior(PistonBehavior.DESTROY));
+  }
+
+  public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+    double d = (double) pos.getX() + 0.55 - (double) (random.nextFloat() * 0.25F);
+    double e = (double) pos.getY() + 0.55 - (double) (random.nextFloat() * 0.25F);
+    double f = (double) pos.getZ() + 0.55 - (double) (random.nextFloat() * 0.25F);
+    if (random.nextInt(5) == 0) {
+      world.addParticle(ParticleTypes.END_ROD, d, e, f, random.nextGaussian() * 0.01, random.nextGaussian() * 0.01, random.nextGaussian() * 0.01);
+    }
+
   }
 
   @Override
