@@ -4,7 +4,6 @@ import com.seacroak.plushables.block.*;
 import com.seacroak.plushables.block.plushable.*;
 import com.seacroak.plushables.item.*;
 import com.seacroak.plushables.util.RegistryHelper;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.BlockItem;
@@ -12,9 +11,9 @@ import net.minecraft.item.Item;
 
 public final class MainRegistry {
   /* Item Settings */
-  static final FabricItemSettings defaultItemSettings = new FabricItemSettings().maxCount(64);
-  static final FabricItemSettings plushableItemSettings = new FabricItemSettings().maxCount(8).equipmentSlot(stack -> EquipmentSlot.HEAD);
-  static final FabricItemSettings unstackableItemSettings = new FabricItemSettings().maxCount(1);
+  static final Item.Settings defaultItemSettings = new Item.Settings().maxCount(64);
+  static final Item.Settings plushableItemSettings = new Item.Settings().maxCount(8).equipmentSlot(stack -> EquipmentSlot.HEAD);
+  static final Item.Settings unstackableItemSettings = new Item.Settings().maxCount(1);
 
   /* Standard Blocks */
   public static final BuilderBlock BUILDER_BLOCK = registerBlock("builder_block", new BuilderBlock(), defaultItemSettings);
@@ -95,12 +94,12 @@ public final class MainRegistry {
   }
 
   /* Default Block Item */
-  private static <B extends Block> B registerBlock(String name, B block, FabricItemSettings itemSettings) {
+  private static <B extends Block> B registerBlock(String name, B block, Item.Settings itemSettings) {
     return RegistryHelper.registerBlock(name, block, itemSettings);
   }
 
 
-  private static <B extends Block> B registerPlushable(String name, B block, FabricItemSettings itemSettings) {
+  private static <B extends Block> B registerPlushable(String name, B block, Item.Settings itemSettings) {
     return RegistryHelper.registerPlushableBlock(name, block, itemSettings);
   }
 

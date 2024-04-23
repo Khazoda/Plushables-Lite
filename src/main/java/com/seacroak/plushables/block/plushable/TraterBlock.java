@@ -2,7 +2,7 @@ package com.seacroak.plushables.block.plushable;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.BasePlushable;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.shape.VoxelShape;
@@ -29,7 +29,7 @@ public class TraterBlock extends BasePlushable {
   }
 
   @Override
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipType options) {
     tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".trater.tooltip"));
     super.appendTooltip(stack, world, tooltip, options);
   }

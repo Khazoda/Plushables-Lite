@@ -5,10 +5,10 @@ import com.seacroak.plushables.block.BaseInteractablePlushable;
 import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
@@ -31,7 +31,7 @@ import java.util.List;
 public class WispBlock extends BaseInteractablePlushable {
 
   public WispBlock() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(14).pistonBehavior(PistonBehavior.DESTROY));
+    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(value -> 14).pistonBehavior(PistonBehavior.DESTROY));
   }
 
   public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
@@ -69,7 +69,7 @@ public class WispBlock extends BaseInteractablePlushable {
   }
 
   @Override
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipType options) {
     tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".wisp.tooltip"));
     super.appendTooltip(stack, world, tooltip, options);
   }

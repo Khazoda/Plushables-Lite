@@ -3,7 +3,6 @@ package com.seacroak.plushables.block;
 import com.mojang.serialization.MapCodec;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -29,7 +28,7 @@ import net.minecraft.world.World;
 public class CodexBlock extends HorizontalFacingBlock {
 
   public CodexBlock() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.CHISELED_BOOKSHELF).strength(0.25f).nonOpaque());
+    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.CHISELED_BOOKSHELF).strength(0.25f).nonOpaque());
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
   }
 

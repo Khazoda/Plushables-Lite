@@ -2,7 +2,6 @@ package com.seacroak.plushables.util;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.item.PlushableBlockItem;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -20,12 +19,12 @@ public class RegistryHelper {
   // Block Registry Helper Functions
   // *******************************
   // 1. Default BlockItem Registration Entrypoint: creates Identifier from ModID & block name
-  public static <B extends Block> B registerBlock(String name, B block, FabricItemSettings itemSettings) {
+  public static <B extends Block> B registerBlock(String name, B block, Item.Settings itemSettings) {
     return registerBlock(newID(name), block, itemSettings);
   }
 
   // 2. Takes identifier and registers block and block items
-  public static <B extends Block> B registerBlock(Identifier name, B block, FabricItemSettings itemSettings) {
+  public static <B extends Block> B registerBlock(Identifier name, B block, Item.Settings itemSettings) {
     BlockItem item = new BlockItem(block, (itemSettings));
     item.appendBlocks(Item.BLOCK_ITEMS, item);
 
@@ -53,11 +52,11 @@ public class RegistryHelper {
   }
 
   // Block Registry Helper Functions (Variant for Plushable Blocks)
-  public static <B extends Block> B registerPlushableBlock(String name, B block, FabricItemSettings itemSettings) {
+  public static <B extends Block> B registerPlushableBlock(String name, B block, Item.Settings itemSettings) {
     return registerPlushableBlock(newID(name), block, itemSettings);
   }
 
-  public static <B extends Block> B registerPlushableBlock(Identifier name, B block, FabricItemSettings itemSettings) {
+  public static <B extends Block> B registerPlushableBlock(Identifier name, B block, Item.Settings itemSettings) {
     BlockItem item = new PlushableBlockItem(block, (itemSettings));
     item.appendBlocks(Item.BLOCK_ITEMS, item);
 

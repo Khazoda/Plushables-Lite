@@ -3,7 +3,6 @@ package com.seacroak.plushables.block;
 import com.mojang.serialization.MapCodec;
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.util.VoxelShapeUtils;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -25,7 +24,7 @@ public class BuilderBlock extends HorizontalFacingBlock {
 
   public BuilderBlock() {
 
-    super(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.COPPER).requiresTool());
+    super(AbstractBlock.Settings.create().strength(2.5f).sounds(BlockSoundGroup.COPPER).requiresTool());
     setDefaultState(this.stateManager.getDefaultState());
   }
 

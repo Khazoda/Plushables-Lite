@@ -2,7 +2,6 @@ package com.seacroak.plushables.item;
 
 
 import com.google.common.collect.Multimap;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -17,7 +16,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 
 public class CapArmorItem extends ArmorItem {
-  static final FabricItemSettings capItemSettings = new FabricItemSettings().maxCount(1);
+  static final Item.Settings capItemSettings = new Item.Settings().maxCount(1);
 
   public CapArmorItem(String name) {
     super(new ArmorMaterial() {

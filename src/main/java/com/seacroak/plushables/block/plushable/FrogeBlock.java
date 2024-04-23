@@ -5,9 +5,9 @@ import com.seacroak.plushables.block.BaseInteractablePlushable;
 import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
@@ -30,7 +30,7 @@ import java.util.List;
 public class FrogeBlock extends BaseInteractablePlushable {
 
   public FrogeBlock() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(8).pistonBehavior(PistonBehavior.DESTROY));
+    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(value -> 8).pistonBehavior(PistonBehavior.DESTROY));
     this.cooldownPeriod = 30;
   }
   @Override
@@ -60,7 +60,7 @@ public class FrogeBlock extends BaseInteractablePlushable {
   }
 
   @Override
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipType options) {
     tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".froge.tooltip"));
     super.appendTooltip(stack, world, tooltip, options);
   }

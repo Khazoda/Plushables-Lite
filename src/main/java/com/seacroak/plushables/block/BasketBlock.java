@@ -9,12 +9,11 @@ import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.registry.uncommon.TileRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -45,7 +44,7 @@ public class BasketBlock extends BlockWithEntity {
   public static LocalRandom random;
 
   public BasketBlock() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOD).strength(1f).nonOpaque());
+    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOD).strength(1f).nonOpaque());
     random = new LocalRandom(100);
 
   }
@@ -172,7 +171,7 @@ public class BasketBlock extends BlockWithEntity {
   }
 
   @Override
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipType options) {
     /* TODO Someday extract this client server config checking functionality to a helper function */
     if (!ClientConfigValues.enable_baskets) {
       tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".disabled"));
