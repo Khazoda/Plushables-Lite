@@ -1,4 +1,4 @@
-![Plushables Banner](https://github.com/Khazoda/plushables-lite/blob/Web-Assets/description_lite/lite_logo_wide_dark.png?raw=true)
+![Plushables Banner](https://github.com/Khazoda/plushables-lite/blob/Web-Assets/description_lite/lite_logo_wide.png?raw=true)
 
 # Why Plushables _Lite_? 🦧
 
