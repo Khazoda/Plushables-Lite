@@ -15,9 +15,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -61,9 +59,9 @@ public class CodexItem extends BlockItem {
   }
 
   @Override
-  public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipType context) {
+  public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
     tooltip.add(Text.translatable("item." + PlushablesMod.MOD_ID + ".codex.tooltip"));
     tooltip.add(Text.translatable("item." + PlushablesMod.MOD_ID + ".codex.broken"));
-    super.appendTooltip(stack, world, tooltip, context);
+    super.appendTooltip(stack, context, tooltip, type);
   }
 }

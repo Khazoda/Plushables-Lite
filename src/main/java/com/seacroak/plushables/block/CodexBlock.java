@@ -14,7 +14,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
@@ -33,7 +32,7 @@ public class CodexBlock extends HorizontalFacingBlock {
   }
 
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
     if (world instanceof ServerWorld) {
       ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(MainRegistry.CODEX_ITEM)));
       world.updateComparators(pos, this);
