@@ -1,11 +1,14 @@
 package com.seacroak.plushables.registry;
 
-import com.seacroak.plushables.block.*;
+import com.seacroak.plushables.block.BasketBlock;
+import com.seacroak.plushables.block.BuilderBlock;
+import com.seacroak.plushables.block.CodexBlock;
 import com.seacroak.plushables.block.plushable.*;
 import com.seacroak.plushables.item.*;
 import com.seacroak.plushables.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 
@@ -86,6 +89,7 @@ public final class MainRegistry {
   public static final Item BEAUX_CAP = registerCap("cap_beaux", new BeauxCapItem());
   public static final Item TRUFFLES_CAP = registerCap("cap_truffles", new TrufflesCapItem());
 
+  public static final ArmorMaterial CAP_MATERIAL = registerArmorMaterial("cap_material", CapArmorItem.material);
 
   public static void init() {
     /* Codex registering with custom block item */
@@ -116,9 +120,12 @@ public final class MainRegistry {
     return RegistryHelper.registerItem(name, new Item(defaultItemSettings));
   }
 
-
   private static Item registerCap(String name, CapArmorItem capType) {
     return RegistryHelper.registerItem(name, capType);
+  }
+
+  private static ArmorMaterial registerArmorMaterial(String name, ArmorMaterial material) {
+    return RegistryHelper.registerArmorMaterial(name, material);
   }
 
 }
