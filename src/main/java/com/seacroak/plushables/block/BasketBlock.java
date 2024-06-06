@@ -6,7 +6,7 @@ import com.seacroak.plushables.block.tile.BasketBlockEntity;
 import com.seacroak.plushables.config.ClientConfigValues;
 import com.seacroak.plushables.item.PlushableBlockItem;
 import com.seacroak.plushables.networking.PlushablesNetworking;
-import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.networking.SoundPayload;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import net.minecraft.block.*;
@@ -17,13 +17,13 @@ import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -56,7 +56,7 @@ public class BasketBlock extends BlockWithEntity {
   }
 
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player,BlockHitResult hit) {
     if (!player.canModifyBlocks()) return ActionResult.CONSUME;
     BasketBlockEntity be = (BasketBlockEntity) world.getBlockEntity(pos);
     float randomPitch = 0.85f + random.nextFloat() / 4;
@@ -65,7 +65,7 @@ public class BasketBlock extends BlockWithEntity {
     /* Add ItemStack to basket */
     if (!player.isSneaking()) {
       ItemStack heldItem = player.getEquippedStack(EquipmentSlot.MAINHAND);
-      /* Return early if player's hand is empty or doesn't contain a plushie */
+      /* Return early if playerUUID's hand is empty or doesn't contain a plushie */
       if (heldItem.isOf(Items.AIR)) return ActionResult.CONSUME;
       /* TODO (Someday extract this client server config checking functionality to a helper function) */
       /* Check client synced config */
@@ -82,7 +82,7 @@ public class BasketBlock extends BlockWithEntity {
       /* Adding an item is only executed if both the server and client allow it */
       if (be.pushPlush(player)) {
         if (world instanceof ServerWorld serverWorld)
-          SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_IN, randomPitch));
+          SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.BASKET_IN, randomPitch));
         else if (world.isClient)
           PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_IN, world, pos, 1f, randomPitch);
         return ActionResult.SUCCESS;
@@ -96,7 +96,7 @@ public class BasketBlock extends BlockWithEntity {
       if ((heldStack.isOf(Items.AIR))) {
         if (be.popPlush(player)) {
           if (world instanceof ServerWorld serverWorld) {
-            SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_OUT, randomPitch));
+            SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.BASKET_OUT, randomPitch));
           } else if (world.isClient)
             PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_OUT, world, pos, 1f, randomPitch);
           return ActionResult.SUCCESS;
@@ -118,7 +118,7 @@ public class BasketBlock extends BlockWithEntity {
     /* Checks whether the lowest index in the basket's stack isn't empty */
     if (poppedStack[0].isOf(Items.AIR)) return;
     if (world instanceof ServerWorld serverWorld) {
-      SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_ATTACK, randomPitch));
+      SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.BASKET_ATTACK, randomPitch));
       for (ItemStack plush : poppedStack
       ) {
         ItemScatterer.spawn(world, pos.getX() + 0.5 + (0.5 * ((2 * random.nextFloat()) - 1)), pos.getY() + 0.5 + random.nextFloat(), pos.getZ() + 0.5 + (0.5 * ((2 * random.nextFloat()) - 1)), plush);
@@ -170,8 +170,9 @@ public class BasketBlock extends BlockWithEntity {
     return BlockRenderType.MODEL;
   }
 
+
   @Override
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipType options) {
+  public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
     /* TODO Someday extract this client server config checking functionality to a helper function */
     if (!ClientConfigValues.enable_baskets) {
       tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".disabled"));
@@ -183,7 +184,7 @@ public class BasketBlock extends BlockWithEntity {
     if(ClientConfigValues.allow_all_block_items_in_baskets) {
       tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.experimental_enabled"));
     }
-    super.appendTooltip(stack, world, tooltip, options);
+    super.appendTooltip(stack, context, tooltip, options);
   }
 
   @Override

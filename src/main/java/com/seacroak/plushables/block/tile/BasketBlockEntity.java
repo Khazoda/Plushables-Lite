@@ -12,6 +12,7 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
@@ -61,7 +62,7 @@ public class BasketBlockEntity extends BlockEntity {
     /* If full totally, reset pointer */
     if (top_pointer == max_stack_size) top_pointer = max_stack_size - 1;
     /* Account for empty basket */
-    if(plushStack[top_pointer].isOf(Items.AIR) && top_pointer == 0) return false;
+    if (plushStack[top_pointer].isOf(Items.AIR) && top_pointer == 0) return false;
     /* Account for last operation */
     if (plushStack[top_pointer].isOf(Items.AIR)) top_pointer -= 1;
     player.giveItemStack(plushStack[top_pointer].copyWithCount(1));
@@ -92,17 +93,20 @@ public class BasketBlockEntity extends BlockEntity {
     return this.seeds;
   }
 
+
   /* Data Serialization */
   @Override
-  protected void writeNbt(NbtCompound nbt) {
-    super.writeNbt(nbt);
+  protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+    super.writeNbt(nbt, registryLookup);
 
     NbtList plushNbtList = new NbtList();
     for (ItemStack plush : plushStack
     ) {
-      NbtCompound itemNbt = new NbtCompound();
-      plush.writeNbt(itemNbt);
-      plushNbtList.add(itemNbt);
+      if (plush != ItemStack.EMPTY) {
+        NbtCompound itemNbt = new NbtCompound();
+        plush.encode(registryLookup, itemNbt);
+        plushNbtList.add(itemNbt);
+      }
     }
     nbt.put("plush_stack", plushNbtList);
     nbt.putInt("top_pointer", top_pointer);
@@ -110,12 +114,12 @@ public class BasketBlockEntity extends BlockEntity {
   }
 
   @Override
-  public void readNbt(NbtCompound nbt) {
-    super.readNbt(nbt);
+  public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+    super.readNbt(nbt, registryLookup);
     NbtList nbtList = nbt.getList("plush_stack", 10);
     for (int i = 0; i < nbtList.size(); i++) {
       NbtCompound itemNbt = nbtList.getCompound(i);
-      ItemStack itemStack = ItemStack.fromNbt(itemNbt);
+      ItemStack itemStack = ItemStack.fromNbt(registryLookup, itemNbt).orElse(ItemStack.EMPTY);
       plushStack[i] = itemStack;
     }
     top_pointer = nbt.getInt("top_pointer");
@@ -135,9 +139,10 @@ public class BasketBlockEntity extends BlockEntity {
     return BlockEntityUpdateS2CPacket.create(this);
   }
 
+
   @Override
-  public NbtCompound toInitialChunkDataNbt() {
-    return createNbt();
+  public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
+    return createNbt(registryLookup);
   }
 
 }
