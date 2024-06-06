@@ -3,6 +3,7 @@ package com.seacroak.plushables.util;
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.item.PlushableBlockItem;
 import net.minecraft.block.Block;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -69,5 +70,10 @@ public class RegistryHelper {
   // ******************************
   public static Item registerItem(String name, Item item) {
     return Registry.register(Registries.ITEM, newID(name), item);
+  }
+
+  // Register Armor Material
+  public static ArmorMaterial registerArmorMaterial(String name, ArmorMaterial material) {
+    return Registry.register(Registries.ARMOR_MATERIAL, newID(name), material);
   }
 }
