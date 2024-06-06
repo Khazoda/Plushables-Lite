@@ -1,8 +1,8 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.networking.ParticlePacketHandler;
+import com.seacroak.plushables.networking.ParticlePayload;
 import com.seacroak.plushables.networking.PlushablesNetworking;
-import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.networking.SoundPayload;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -15,7 +15,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
@@ -41,7 +40,7 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
 
   // Shift Right Click pickup code
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
     if (!player.isSneaking()) {
       if (state.get(ON_COOLDOWN)) return ActionResult.CONSUME;
       this.startCooldown(state, world, pos);
@@ -53,10 +52,10 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
       /* Serverside */
       if (!player.canModifyBlocks()) return ActionResult.CONSUME;
       if (world instanceof ServerWorld serverWorld) {
-        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
-        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
-        ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket(player, pos, "minecraft:poof", 5, new Vec3d(0, 0, 0), 0.05f));
-        ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket(player, pos, "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
+        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
+        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
+        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player, pos, "minecraft:poof", 5, new Vec3d(0, 0, 0), 0.05f));
+        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player, pos, "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
 
         ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(this)));
         world.updateComparators(pos, this);
@@ -97,8 +96,8 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
   /* Override these two methods to send specific sound and particle packets */
   /* Every sound/particle used needs to be mirrored to each method */
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
-    SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BUILDER_DING, 1f));
-    ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket(player, pos, "minecraft:poof", 10, new Vec3d(0, 0.5, 0), 0f));
+//    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(playerUUID, pos, SoundRegistry.BUILDER_DING, 1f));
+//    ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(playerUUID, pos, "minecraft:poof", 10, new Vec3d(0, 0.5, 0), 0f));
     return ActionResult.CONSUME;
   }
 
