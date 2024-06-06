@@ -31,7 +31,6 @@ public class PlushablesAdvancements implements Consumer<Consumer<AdvancementEntr
         )
         // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
         .criterion("root", EnterBlockCriterion.Conditions.block(Blocks.AIR))
-        .rewards(AdvancementRewards.Builder.loot(new Identifier("plushables:grant_plushables_codex")))
         .build(advancementConsumer, "plushables" + "/root");
 
     AdvancementEntry gotCopperIngotAdvancement = Advancement.Builder.create().parent(rootAdvancement)
