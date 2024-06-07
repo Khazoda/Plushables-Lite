@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:gold_ingot"
-            ]
+            "items": "minecraft:gold_ingot"
           }
         ]
       },
@@ -19,12 +17,10 @@
     "description": {
       "translate": "advancement.plushables.got_gold_ingot.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
-      "item": "minecraft:gold_ingot"
+      "count": 1,
+      "id": "minecraft:gold_ingot"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.plushables.got_gold_ingot.title"
     }

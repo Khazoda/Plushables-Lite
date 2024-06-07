@@ -13,10 +13,9 @@
     "description": {
       "translate": "advancement.plushables.root.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
-      "item": "plushables:penguin_plushable"
+      "count": 1,
+      "id": "plushables:penguin_plushable"
     },
     "show_toast": false,
     "title": {
@@ -28,10 +27,5 @@
       "root"
     ]
   ],
-  "rewards": {
-    "loot": [
-      "plushables:grant_plushables_codex"
-    ]
-  },
   "sends_telemetry_event": true
 }

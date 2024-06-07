@@ -1,6 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": ["X#X", "#^#", " # "],
+  "pattern": [
+    "X#X",
+    "#^#",
+    " # "
+  ],
   "key": {
     "#": {
       "item": "minecraft:gold_nugget"
@@ -13,7 +17,7 @@
     }
   },
   "result": {
-    "item": "plushables:heart_of_gold",
-    "count": 1
+    "count": 1,
+    "id": "plushables:heart_of_gold"
   }
 }

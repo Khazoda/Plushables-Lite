@@ -12,6 +12,7 @@
     }
   ],
   "result": {
-    "item": "plushables:snail_plushable"
+    "count": 1,
+    "id": "plushables:snail_plushable"
   }
 }

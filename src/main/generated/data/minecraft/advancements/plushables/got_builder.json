@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "plushables:penguin_plushable"
-            ]
+            "items": "plushables:penguin_plushable"
           }
         ]
       },
@@ -15,14 +13,12 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.plushables.got_builder.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
-      "item": "plushables:penguin_plushable"
+      "count": 1,
+      "id": "plushables:penguin_plushable"
     },
     "show_toast": false,
     "title": {

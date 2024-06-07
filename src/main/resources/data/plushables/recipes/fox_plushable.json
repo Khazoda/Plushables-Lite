@@ -12,6 +12,7 @@
     }
   ],
   "result": {
-    "item": "plushables:fox_plushable"
+    "count": 1,
+    "id": "plushables:fox_plushable"
   }
 }
