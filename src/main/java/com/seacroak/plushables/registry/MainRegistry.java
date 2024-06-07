@@ -11,6 +11,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.registry.entry.RegistryEntry;
 
 public final class MainRegistry {
   /* Item Settings */
@@ -82,19 +83,22 @@ public final class MainRegistry {
 
 
   /* Caps */
+  public static final RegistryEntry<ArmorMaterial> FROGLIN_MATERIAL = registerArmorMaterial("cap_froglin", FroglinCapItem.MATERIAL);
   public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCapItem());
+  public static final RegistryEntry<ArmorMaterial> FOX_MATERIAL = registerArmorMaterial("cap_fox", FoxCapItem.MATERIAL);
   public static final Item FOX_CAP = registerCap("cap_fox", new FoxCapItem());
+  public static final RegistryEntry<ArmorMaterial> UNICORN_MATERIAL = registerArmorMaterial("cap_unicorn", UnicornCapItem.MATERIAL);
   public static final Item UNICORN_CAP = registerCap("cap_unicorn", new UnicornCapItem());
+  public static final RegistryEntry<ArmorMaterial> MUSHROOM_MATERIAL = registerArmorMaterial("cap_mushroom", MushroomCapItem.MATERIAL);
   public static final Item MUSHROOM_CAP = registerCap("cap_mushroom", new MushroomCapItem());
+  public static final RegistryEntry<ArmorMaterial> BEAUX_MATERIAL = registerArmorMaterial("cap_beaux", BeauxCapItem.MATERIAL);
   public static final Item BEAUX_CAP = registerCap("cap_beaux", new BeauxCapItem());
+  public static final RegistryEntry<ArmorMaterial> TRUFFLES_MATERIAL = registerArmorMaterial("cap_truffles", TrufflesCapItem.MATERIAL);
   public static final Item TRUFFLES_CAP = registerCap("cap_truffles", new TrufflesCapItem());
 
-  public static final ArmorMaterial CAP_MATERIAL = registerArmorMaterial("cap_material", CapArmorItem.material);
 
   public static void init() {
     /* Codex registering with custom block item */
-
-
   }
 
   /* Default Block Item */
@@ -124,7 +128,7 @@ public final class MainRegistry {
     return RegistryHelper.registerItem(name, capType);
   }
 
-  private static ArmorMaterial registerArmorMaterial(String name, ArmorMaterial material) {
+  private static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, ArmorMaterial material) {
     return RegistryHelper.registerArmorMaterial(name, material);
   }
 

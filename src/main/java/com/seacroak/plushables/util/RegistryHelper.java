@@ -8,6 +8,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 public class RegistryHelper {
@@ -73,7 +74,20 @@ public class RegistryHelper {
   }
 
   // Register Armor Material
-  public static ArmorMaterial registerArmorMaterial(String name, ArmorMaterial material) {
-    return Registry.register(Registries.ARMOR_MATERIAL, newID(name), material);
+  public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, ArmorMaterial material) {
+    return Registry.registerReference(Registries.ARMOR_MATERIAL, newID(name), material);
   }
+
+//  public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String id, EnumMap<ArmorItem.Type, Integer> defense, int enchantability, RegistryEntry<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient, List<ArmorMaterial.Layer> layers) {
+//    EnumMap<ArmorItem.Type, Integer> enumMap = new EnumMap(ArmorItem.Type.class);
+//    ArmorItem.Type[] var9 = ArmorItem.Type.values();
+//    int var10 = var9.length;
+//
+//    for(int var11 = 0; var11 < var10; ++var11) {
+//      ArmorItem.Type type = var9[var11];
+//      enumMap.put(type, (Integer)defense.get(type));
+//    }
+//
+//    return Registry.registerReference(Registries.ARMOR_MATERIAL, new Identifier(id), new ArmorMaterial(enumMap, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
+//  }
 }
