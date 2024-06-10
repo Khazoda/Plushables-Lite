@@ -98,17 +98,12 @@ public class BasketBlockEntity extends BlockEntity {
   @Override
   protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
     super.writeNbt(nbt, registryLookup);
-
-    NbtList plushNbtList = new NbtList();
     for (ItemStack plush : plushStack
     ) {
       if (plush != ItemStack.EMPTY) {
-        NbtCompound itemNbt = new NbtCompound();
-        plush.encode(registryLookup, itemNbt);
-        plushNbtList.add(itemNbt);
+        nbt.put("plush_stack", plush.encode(registryLookup));
       }
     }
-    nbt.put("plush_stack", plushNbtList);
     nbt.putInt("top_pointer", top_pointer);
     nbt.putIntArray("seeds", seeds);
   }
