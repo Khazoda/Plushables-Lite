@@ -31,7 +31,6 @@ public class PlushablesAdvancements implements Consumer<Consumer<AdvancementEntr
         )
         // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
         .criterion("root", EnterBlockCriterion.Conditions.block(Blocks.AIR))
-        .rewards(AdvancementRewards.Builder.loot(new Identifier("plushables:grant_plushables_codex")))
         .build(advancementConsumer, "plushables" + "/root");
 
     AdvancementEntry gotCopperIngotAdvancement = Advancement.Builder.create().parent(rootAdvancement)
@@ -141,6 +140,14 @@ public class PlushablesAdvancements implements Consumer<Consumer<AdvancementEntr
             .addRecipe(GenericUtils.ID("orangutan" + "_plushable"))
             .addRecipe(GenericUtils.ID("owl" + "_plushable"))
             .addRecipe(GenericUtils.ID("statuette" + "_plushable"))
+            .addRecipe(GenericUtils.ID("mammoth" + "_plushable"))
+            .addRecipe(GenericUtils.ID("tiger" + "_plushable"))
+            .addRecipe(GenericUtils.ID("walrus" + "_plushable"))
+            .addRecipe(GenericUtils.ID("blahaj" + "_plushable"))
+            .addRecipe(GenericUtils.ID("wisp" + "_plushable"))
+            .addRecipe(GenericUtils.ID("cooper" + "_plushable"))
+            .addRecipe(GenericUtils.ID("ziggy" + "_plushable"))
+            .addRecipe(GenericUtils.ID("potsy" + "_plushable"))
 
             .addRecipe(GenericUtils.ID("cap" + "_froglin"))
             .addRecipe(GenericUtils.ID("cap" + "_fox"))

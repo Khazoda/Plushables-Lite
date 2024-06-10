@@ -2,12 +2,13 @@ package com.seacroak.plushables.util;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.item.PlushableBlockItem;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 public class RegistryHelper {
@@ -20,12 +21,12 @@ public class RegistryHelper {
   // Block Registry Helper Functions
   // *******************************
   // 1. Default BlockItem Registration Entrypoint: creates Identifier from ModID & block name
-  public static <B extends Block> B registerBlock(String name, B block, FabricItemSettings itemSettings) {
+  public static <B extends Block> B registerBlock(String name, B block, Item.Settings itemSettings) {
     return registerBlock(newID(name), block, itemSettings);
   }
 
   // 2. Takes identifier and registers block and block items
-  public static <B extends Block> B registerBlock(Identifier name, B block, FabricItemSettings itemSettings) {
+  public static <B extends Block> B registerBlock(Identifier name, B block, Item.Settings itemSettings) {
     BlockItem item = new BlockItem(block, (itemSettings));
     item.appendBlocks(Item.BLOCK_ITEMS, item);
 
@@ -53,11 +54,11 @@ public class RegistryHelper {
   }
 
   // Block Registry Helper Functions (Variant for Plushable Blocks)
-  public static <B extends Block> B registerPlushableBlock(String name, B block, FabricItemSettings itemSettings) {
+  public static <B extends Block> B registerPlushableBlock(String name, B block, Item.Settings itemSettings) {
     return registerPlushableBlock(newID(name), block, itemSettings);
   }
 
-  public static <B extends Block> B registerPlushableBlock(Identifier name, B block, FabricItemSettings itemSettings) {
+  public static <B extends Block> B registerPlushableBlock(Identifier name, B block, Item.Settings itemSettings) {
     BlockItem item = new PlushableBlockItem(block, (itemSettings));
     item.appendBlocks(Item.BLOCK_ITEMS, item);
 
@@ -71,4 +72,22 @@ public class RegistryHelper {
   public static Item registerItem(String name, Item item) {
     return Registry.register(Registries.ITEM, newID(name), item);
   }
+
+  // Register Armor Material
+  public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, ArmorMaterial material) {
+    return Registry.registerReference(Registries.ARMOR_MATERIAL, newID(name), material);
+  }
+
+//  public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String id, EnumMap<ArmorItem.Type, Integer> defense, int enchantability, RegistryEntry<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient, List<ArmorMaterial.Layer> layers) {
+//    EnumMap<ArmorItem.Type, Integer> enumMap = new EnumMap(ArmorItem.Type.class);
+//    ArmorItem.Type[] var9 = ArmorItem.Type.values();
+//    int var10 = var9.length;
+//
+//    for(int var11 = 0; var11 < var10; ++var11) {
+//      ArmorItem.Type type = var9[var11];
+//      enumMap.put(type, (Integer)defense.get(type));
+//    }
+//
+//    return Registry.registerReference(Registries.ARMOR_MATERIAL, new Identifier(id), new ArmorMaterial(enumMap, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
+//  }
 }

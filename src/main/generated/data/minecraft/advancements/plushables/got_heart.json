@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "plushables:heart_of_gold"
-            ]
+            "items": "plushables:heart_of_gold"
           }
         ]
       },
@@ -15,16 +13,13 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.plushables.got_heart.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
-      "item": "plushables:heart_of_gold"
+      "count": 1,
+      "id": "plushables:heart_of_gold"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.plushables.got_heart.title"
     }
@@ -82,6 +77,14 @@
       "plushables:orangutan_plushable",
       "plushables:owl_plushable",
       "plushables:statuette_plushable",
+      "plushables:mammoth_plushable",
+      "plushables:tiger_plushable",
+      "plushables:walrus_plushable",
+      "plushables:blahaj_plushable",
+      "plushables:wisp_plushable",
+      "plushables:cooper_plushable",
+      "plushables:ziggy_plushable",
+      "plushables:potsy_plushable",
       "plushables:cap_froglin",
       "plushables:cap_fox",
       "plushables:cap_unicorn",

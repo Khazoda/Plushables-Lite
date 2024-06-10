@@ -3,7 +3,6 @@ package com.seacroak.plushables.block;
 import com.mojang.serialization.MapCodec;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -15,7 +14,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
@@ -29,12 +27,12 @@ import net.minecraft.world.World;
 public class CodexBlock extends HorizontalFacingBlock {
 
   public CodexBlock() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.CHISELED_BOOKSHELF).strength(0.25f).nonOpaque());
+    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.CHISELED_BOOKSHELF).strength(0.25f).nonOpaque());
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
   }
 
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
     if (world instanceof ServerWorld) {
       ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(MainRegistry.CODEX_ITEM)));
       world.updateComparators(pos, this);

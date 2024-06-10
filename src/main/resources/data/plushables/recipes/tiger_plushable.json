@@ -12,6 +12,7 @@
     }
   ],
   "result": {
-    "item": "plushables:tiger_plushable"
+    "count": 1,
+    "id": "plushables:tiger_plushable"
   }
 }

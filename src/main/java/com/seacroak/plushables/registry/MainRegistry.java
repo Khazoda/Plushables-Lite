@@ -1,20 +1,23 @@
 package com.seacroak.plushables.registry;
 
-import com.seacroak.plushables.block.*;
+import com.seacroak.plushables.block.BasketBlock;
+import com.seacroak.plushables.block.BuilderBlock;
+import com.seacroak.plushables.block.CodexBlock;
 import com.seacroak.plushables.block.plushable.*;
 import com.seacroak.plushables.item.*;
 import com.seacroak.plushables.util.RegistryHelper;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.registry.entry.RegistryEntry;
 
 public final class MainRegistry {
   /* Item Settings */
-  static final FabricItemSettings defaultItemSettings = new FabricItemSettings().maxCount(64);
-  static final FabricItemSettings plushableItemSettings = new FabricItemSettings().maxCount(8).equipmentSlot(stack -> EquipmentSlot.HEAD);
-  static final FabricItemSettings unstackableItemSettings = new FabricItemSettings().maxCount(1);
+  static final Item.Settings defaultItemSettings = new Item.Settings().maxCount(64);
+  static final Item.Settings plushableItemSettings = new Item.Settings().maxCount(8).equipmentSlot(stack -> EquipmentSlot.HEAD);
+  static final Item.Settings unstackableItemSettings = new Item.Settings().maxCount(1);
 
   /* Standard Blocks */
   public static final BuilderBlock BUILDER_BLOCK = registerBlock("builder_block", new BuilderBlock(), defaultItemSettings);
@@ -80,27 +83,31 @@ public final class MainRegistry {
 
 
   /* Caps */
+  public static final RegistryEntry<ArmorMaterial> FROGLIN_MATERIAL = registerArmorMaterial("cap_froglin", FroglinCapItem.MATERIAL);
   public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCapItem());
+  public static final RegistryEntry<ArmorMaterial> FOX_MATERIAL = registerArmorMaterial("cap_fox", FoxCapItem.MATERIAL);
   public static final Item FOX_CAP = registerCap("cap_fox", new FoxCapItem());
+  public static final RegistryEntry<ArmorMaterial> UNICORN_MATERIAL = registerArmorMaterial("cap_unicorn", UnicornCapItem.MATERIAL);
   public static final Item UNICORN_CAP = registerCap("cap_unicorn", new UnicornCapItem());
+  public static final RegistryEntry<ArmorMaterial> MUSHROOM_MATERIAL = registerArmorMaterial("cap_mushroom", MushroomCapItem.MATERIAL);
   public static final Item MUSHROOM_CAP = registerCap("cap_mushroom", new MushroomCapItem());
+  public static final RegistryEntry<ArmorMaterial> BEAUX_MATERIAL = registerArmorMaterial("cap_beaux", BeauxCapItem.MATERIAL);
   public static final Item BEAUX_CAP = registerCap("cap_beaux", new BeauxCapItem());
+  public static final RegistryEntry<ArmorMaterial> TRUFFLES_MATERIAL = registerArmorMaterial("cap_truffles", TrufflesCapItem.MATERIAL);
   public static final Item TRUFFLES_CAP = registerCap("cap_truffles", new TrufflesCapItem());
 
 
   public static void init() {
     /* Codex registering with custom block item */
-
-
   }
 
   /* Default Block Item */
-  private static <B extends Block> B registerBlock(String name, B block, FabricItemSettings itemSettings) {
+  private static <B extends Block> B registerBlock(String name, B block, Item.Settings itemSettings) {
     return RegistryHelper.registerBlock(name, block, itemSettings);
   }
 
 
-  private static <B extends Block> B registerPlushable(String name, B block, FabricItemSettings itemSettings) {
+  private static <B extends Block> B registerPlushable(String name, B block, Item.Settings itemSettings) {
     return RegistryHelper.registerPlushableBlock(name, block, itemSettings);
   }
 
@@ -117,9 +124,12 @@ public final class MainRegistry {
     return RegistryHelper.registerItem(name, new Item(defaultItemSettings));
   }
 
-
   private static Item registerCap(String name, CapArmorItem capType) {
     return RegistryHelper.registerItem(name, capType);
+  }
+
+  private static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, ArmorMaterial material) {
+    return RegistryHelper.registerArmorMaterial(name, material);
   }
 
 }

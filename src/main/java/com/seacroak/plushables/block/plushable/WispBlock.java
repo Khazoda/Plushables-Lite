@@ -2,14 +2,15 @@ package com.seacroak.plushables.block.plushable;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.BaseInteractablePlushable;
-import com.seacroak.plushables.networking.ParticlePacketHandler;
+import com.seacroak.plushables.networking.ParticlePayload;
 import com.seacroak.plushables.networking.PlushablesNetworking;
-import com.seacroak.plushables.networking.SoundPacketHandler;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import com.seacroak.plushables.networking.SoundPayload;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -22,16 +23,14 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class WispBlock extends BaseInteractablePlushable {
 
   public WispBlock() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(14).pistonBehavior(PistonBehavior.DESTROY));
+    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(value -> 14).pistonBehavior(PistonBehavior.DESTROY));
   }
 
   public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
@@ -55,8 +54,8 @@ public class WispBlock extends BaseInteractablePlushable {
 
   @Override
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
-    SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_RESONATE, 1f));
-    ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
+    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_RESONATE, 1f));
+    ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
         (player, pos, "minecraft:end_rod", 5, new Vec3d(0, -0.1, 0), 0.1f));
     return ActionResult.CONSUME;
   }
@@ -69,8 +68,8 @@ public class WispBlock extends BaseInteractablePlushable {
   }
 
   @Override
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+  public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
     tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".wisp.tooltip"));
-    super.appendTooltip(stack, world, tooltip, options);
+    super.appendTooltip(stack, context, tooltip, options);
   }
 }

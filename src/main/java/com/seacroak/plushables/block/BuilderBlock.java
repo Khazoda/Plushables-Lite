@@ -3,7 +3,6 @@ package com.seacroak.plushables.block;
 import com.mojang.serialization.MapCodec;
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.util.VoxelShapeUtils;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -12,7 +11,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -25,13 +23,13 @@ public class BuilderBlock extends HorizontalFacingBlock {
 
   public BuilderBlock() {
 
-    super(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.COPPER).requiresTool());
+    super(AbstractBlock.Settings.create().strength(2.5f).sounds(BlockSoundGroup.COPPER).requiresTool());
     setDefaultState(this.stateManager.getDefaultState());
   }
 
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos,
-                            PlayerEntity player, Hand hand, BlockHitResult hit) {
+                            PlayerEntity player, BlockHitResult hit) {
     if (world.isClient) {
       player.sendMessage(Text.translatable("block." + PlushablesMod.MOD_ID + ".builder.broken"));
     }

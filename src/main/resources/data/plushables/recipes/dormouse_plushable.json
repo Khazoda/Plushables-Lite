@@ -12,6 +12,7 @@
     }
   ],
   "result": {
-    "item": "plushables:dormouse_plushable"
+    "count": 1,
+    "id": "plushables:dormouse_plushable"
   }
 }

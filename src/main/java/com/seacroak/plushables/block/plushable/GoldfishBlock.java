@@ -1,9 +1,9 @@
 package com.seacroak.plushables.block.plushable;
 
 import com.seacroak.plushables.block.BaseInteractablePlushable;
-import com.seacroak.plushables.networking.ParticlePacketHandler;
+import com.seacroak.plushables.networking.ParticlePayload;
 import com.seacroak.plushables.networking.PlushablesNetworking;
-import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.networking.SoundPayload;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
@@ -31,10 +31,10 @@ public class GoldfishBlock extends BaseInteractablePlushable {
 
   @Override
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
-    SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.GOLDFISH, 1f));
-    ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
+    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.GOLDFISH, 1f));
+    ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
         (player, pos, "minecraft:dolphin", 15, new Vec3d(0, 0.15, 0), 0.05f));
-    ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
+    ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
         (player, pos, "minecraft:fishing", 15, new Vec3d(0, 0.15, 0), 0.05f));
     return ActionResult.CONSUME;
   }

@@ -1,12 +1,11 @@
 package com.seacroak.plushables.block;
 
 import com.mojang.serialization.MapCodec;
-import com.seacroak.plushables.networking.ParticlePacketHandler;
+import com.seacroak.plushables.networking.ParticlePayload;
 import com.seacroak.plushables.networking.PlushablesNetworking;
-import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.networking.SoundPayload;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,7 +21,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
@@ -39,7 +37,7 @@ import java.util.Random;
 
 public abstract class BasePlushable extends HorizontalFacingBlock implements Waterloggable {
   public static Random rand;
-  public static final Settings defaultSettings = FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().pistonBehavior(PistonBehavior.DESTROY);
+  public static final Settings defaultSettings = AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().pistonBehavior(PistonBehavior.DESTROY);
   public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
   //  Constructors
@@ -55,18 +53,19 @@ public abstract class BasePlushable extends HorizontalFacingBlock implements Wat
     rand = new Random();
   }
 
+
   // Shift Right Click pickup code
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
 
     if (player.isSneaking()) {
       if (!player.canModifyBlocks()) return ActionResult.CONSUME;
       /* Serverside */
       if (world instanceof ServerWorld serverWorld) {
-        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
-        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
-        ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket(player, pos, "minecraft:poof", 5, new Vec3d(0, 0, 0), 0.05f));
-        ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket(player, pos, "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
+        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
+        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
+        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos.toCenterPos(), "minecraft:poof", 5, new Vec3d(0, 0, 0), 0.05f));
+        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos.toCenterPos(), "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
 
         ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(this)));
         world.updateComparators(pos, this);

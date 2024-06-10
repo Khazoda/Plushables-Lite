@@ -1,10 +1,39 @@
 package com.seacroak.plushables.item;
 
 
-import net.minecraft.item.ArmorMaterials;
+import com.seacroak.plushables.registry.MainRegistry;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
 
-public class FroglinCapItem extends CapArmorItem{
+import java.util.EnumMap;
+import java.util.List;
+
+import static com.seacroak.plushables.PlushablesMod.MOD_ID;
+
+public class FroglinCapItem extends CapArmorItem {
   public FroglinCapItem() {
-    super("cap_froglin");
+    super("cap_froglin", MainRegistry.FROGLIN_MATERIAL);
   }
+  public static final ArmorMaterial MATERIAL = new ArmorMaterial(
+      Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+        map.put(ArmorItem.Type.HELMET, 2);
+      }),
+      20,
+      SoundEvents.ITEM_ARMOR_EQUIP_GENERIC,
+      () -> Ingredient.ofItems(Items.LEATHER),
+      List.of(
+          new ArmorMaterial.Layer(
+              new Identifier(MOD_ID, "cap_froglin")
+          )
+      ),
+      0,
+      0
+  );
 }
+
+

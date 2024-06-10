@@ -12,6 +12,7 @@
     }
   ],
   "result": {
-    "item": "plushables:froge_plushable"
+    "count": 1,
+    "id": "plushables:froge_plushable"
   }
 }
