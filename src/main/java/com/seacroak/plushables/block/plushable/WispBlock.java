@@ -8,10 +8,10 @@ import com.seacroak.plushables.networking.SoundPayload;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
@@ -30,7 +30,7 @@ import java.util.List;
 public class WispBlock extends BaseInteractablePlushable {
 
   public WispBlock() {
-    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(value -> 14).pistonBehavior(PistonBehavior.DESTROY));
+    super(Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(value -> 14).pistonBehavior(PistonBehavior.DESTROY));
   }
 
   public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {

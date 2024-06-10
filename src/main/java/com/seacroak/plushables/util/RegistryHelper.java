@@ -15,7 +15,7 @@ public class RegistryHelper {
 
   // General use Identifier() maker function
   public static Identifier newID(String name) {
-    return new Identifier(PlushablesMod.MOD_ID, name);
+    return Identifier.of(PlushablesMod.MOD_ID, name);
   }
 
   // Block Registry Helper Functions
@@ -88,6 +88,6 @@ public class RegistryHelper {
 //      enumMap.put(type, (Integer)defense.get(type));
 //    }
 //
-//    return Registry.registerReference(Registries.ARMOR_MATERIAL, new Identifier(id), new ArmorMaterial(enumMap, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
+//    return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(id), new ArmorMaterial(enumMap, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
 //  }
 }

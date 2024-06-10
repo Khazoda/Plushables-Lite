@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public record ParticlePayload(UUID playerUUID, Vec3d pos, String particleIdentifier, int particleCount, Vec3d offset,
                               float spread) implements CustomPayload {
-    public static final CustomPayload.Id<ParticlePayload> ID = new CustomPayload.Id<>(GenericUtils.ID("plushable_particle_packet"));
+    public static final Id<ParticlePayload> ID = new Id<>(GenericUtils.ID("plushable_particle_packet"));
     public static final PacketCodec<RegistryByteBuf, ParticlePayload> CODEC = PacketCodec.of(ParticlePayload::write, ParticlePayload::read);
 
 

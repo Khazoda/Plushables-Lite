@@ -20,15 +20,15 @@ public class FroglinCapItem extends CapArmorItem {
     super("cap_froglin", MainRegistry.FROGLIN_MATERIAL);
   }
   public static final ArmorMaterial MATERIAL = new ArmorMaterial(
-      Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.HELMET, 2);
+      Util.make(new EnumMap<>(Type.class), map -> {
+        map.put(Type.HELMET, 2);
       }),
       20,
       SoundEvents.ITEM_ARMOR_EQUIP_GENERIC,
       () -> Ingredient.ofItems(Items.LEATHER),
       List.of(
           new ArmorMaterial.Layer(
-              new Identifier(MOD_ID, "cap_froglin")
+              Identifier.of(MOD_ID, "cap_froglin")
           )
       ),
       0,

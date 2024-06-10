@@ -15,7 +15,7 @@ import java.util.UUID;
 /* Packet fields should mimic those found in PlushablesConfig.class */
 
 public record ConfigSyncPayload(UUID playerToSync, boolean enableBasket, boolean allowAllBlockItems) implements CustomPayload {
-    public static final CustomPayload.Id<ConfigSyncPayload> ID = new CustomPayload.Id<>(GenericUtils.ID("plushable_config_packet"));
+    public static final Id<ConfigSyncPayload> ID = new Id<>(GenericUtils.ID("plushable_config_packet"));
     public static final PacketCodec<RegistryByteBuf, ConfigSyncPayload> CODEC = PacketCodec.of(ConfigSyncPayload::write, ConfigSyncPayload::read);
 
     public static void sendConfigPacketToClient(ServerPlayerEntity player, UUID playerToSync,boolean enableBasket, boolean allowAllBlockItems) {

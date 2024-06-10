@@ -13,13 +13,13 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
@@ -44,7 +44,7 @@ public class BasketBlock extends BlockWithEntity {
   public static LocalRandom random;
 
   public BasketBlock() {
-    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOD).strength(1f).nonOpaque());
+    super(Settings.create().sounds(BlockSoundGroup.WOOD).strength(1f).nonOpaque());
     random = new LocalRandom(100);
 
   }

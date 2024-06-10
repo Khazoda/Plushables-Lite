@@ -13,7 +13,7 @@ import net.minecraft.util.math.Vec3d;
 
 public record SoundPayloadPlayerless(Vec3d pos, String soundIdentifier,
                                      float pitch) implements CustomPayload {
-    public static final CustomPayload.Id<SoundPayloadPlayerless> ID = new CustomPayload.Id<>(GenericUtils.ID("plushable_sound_packet_without_player"));
+    public static final Id<SoundPayloadPlayerless> ID = new Id<>(GenericUtils.ID("plushable_sound_packet_without_player"));
     public static final PacketCodec<RegistryByteBuf, SoundPayloadPlayerless> CODEC = PacketCodec.of(SoundPayloadPlayerless::write, SoundPayloadPlayerless::read);
 
     @Override

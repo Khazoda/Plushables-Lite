@@ -23,7 +23,7 @@ public class BuilderBlock extends HorizontalFacingBlock {
 
   public BuilderBlock() {
 
-    super(AbstractBlock.Settings.create().strength(2.5f).sounds(BlockSoundGroup.COPPER).requiresTool());
+    super(Settings.create().strength(2.5f).sounds(BlockSoundGroup.COPPER).requiresTool());
     setDefaultState(this.stateManager.getDefaultState());
   }
 
