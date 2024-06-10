@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
@@ -98,12 +99,15 @@ public class BasketBlockEntity extends BlockEntity {
   @Override
   protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
     super.writeNbt(nbt, registryLookup);
+    NbtList nbtList = new NbtList();
     for (ItemStack plush : plushStack
     ) {
       if (plush != ItemStack.EMPTY) {
-        nbt.put("plush_stack", plush.encode(registryLookup));
+        NbtElement nbtBuilder = plush.encode(registryLookup);
+        nbtList.add(nbtBuilder);
       }
     }
+    nbt.put("plush_stack", nbtList);
     nbt.putInt("top_pointer", top_pointer);
     nbt.putIntArray("seeds", seeds);
   }
