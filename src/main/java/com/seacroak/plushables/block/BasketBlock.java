@@ -56,7 +56,7 @@ public class BasketBlock extends BlockWithEntity {
   }
 
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player,BlockHitResult hit) {
+  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
     if (!player.canModifyBlocks()) return ActionResult.CONSUME;
     BasketBlockEntity be = (BasketBlockEntity) world.getBlockEntity(pos);
     float randomPitch = 0.85f + random.nextFloat() / 4;
@@ -114,7 +114,7 @@ public class BasketBlock extends BlockWithEntity {
     float randomPitch = 0.85f + random.nextFloat() / 4;
     BlockEntity be = world.getBlockEntity(pos);
     if (!(be instanceof BasketBlockEntity)) return;
-    ItemStack[] poppedStack = ((BasketBlockEntity) be).popAll(player);
+    ItemStack[] poppedStack = ((BasketBlockEntity) be).popAll();
     /* Checks whether the lowest index in the basket's stack isn't empty */
     if (poppedStack[0].isOf(Items.AIR)) return;
     if (world instanceof ServerWorld serverWorld) {
@@ -135,11 +135,18 @@ public class BasketBlock extends BlockWithEntity {
       return;
     }
     BlockEntity blockEntity = world.getBlockEntity(pos);
-    if (blockEntity instanceof BasketBlockEntity) {
+    if (blockEntity instanceof BasketBlockEntity basket) {
       world.updateComparators(pos, this);
+
+      ItemStack[] poppedStack = basket.popAll();
+      for (var plush : poppedStack) {
+        if (plush.isEmpty()) continue;
+        ItemScatterer.spawn(world, pos.getX() + 0.5 + (0.5 * ((2 * random.nextFloat()) - 1)), pos.getY() + 0.5 + random.nextFloat(), pos.getZ() + 0.5 + (0.5 * ((2 * random.nextFloat()) - 1)), plush);
+      }
     }
     super.onStateReplaced(state, world, pos, newState, moved);
   }
+
 
   /* Rendering fluff */
   public VoxelShape getShape() {
@@ -181,7 +188,7 @@ public class BasketBlock extends BlockWithEntity {
       tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_2"));
       tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_3"));
     }
-    if(ClientConfigValues.allow_all_block_items_in_baskets) {
+    if (ClientConfigValues.allow_all_block_items_in_baskets) {
       tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.experimental_enabled"));
     }
     super.appendTooltip(stack, context, tooltip, options);
