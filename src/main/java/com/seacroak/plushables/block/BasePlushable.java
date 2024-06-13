@@ -128,7 +128,6 @@ public abstract class BasePlushable extends HorizontalFacingBlock implements Wat
   public BlockState getPlacementState(ItemPlacementContext context) {
     return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite())
         .with(WATERLOGGED, context.getWorld().getFluidState(context.getBlockPos()).isOf(Fluids.WATER));
-
   }
 
   /* Waterlogging */
