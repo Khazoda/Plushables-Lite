@@ -82,7 +82,7 @@ public class BasketBlock extends BlockWithEntity {
       /* Adding an item is only executed if both the server and client allow it */
       if (be.pushPlush(player)) {
         if (world instanceof ServerWorld serverWorld)
-          SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.BASKET_IN, randomPitch));
+          SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.BASKET_IN, randomPitch));
         else if (world.isClient)
           PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_IN, world, pos, 1f, randomPitch);
         return ActionResult.SUCCESS;
@@ -96,7 +96,7 @@ public class BasketBlock extends BlockWithEntity {
       if ((heldStack.isOf(Items.AIR))) {
         if (be.popPlush(player)) {
           if (world instanceof ServerWorld serverWorld) {
-            SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.BASKET_OUT, randomPitch));
+            SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.BASKET_OUT, randomPitch));
           } else if (world.isClient)
             PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_OUT, world, pos, 1f, randomPitch);
           return ActionResult.SUCCESS;
@@ -118,7 +118,7 @@ public class BasketBlock extends BlockWithEntity {
     /* Checks whether the lowest index in the basket's stack isn't empty */
     if (poppedStack[0].isOf(Items.AIR)) return;
     if (world instanceof ServerWorld serverWorld) {
-      SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.BASKET_ATTACK, randomPitch));
+      SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.BASKET_ATTACK, randomPitch));
       for (ItemStack plush : poppedStack
       ) {
         ItemScatterer.spawn(world, pos.getX() + 0.5 + (0.5 * ((2 * random.nextFloat()) - 1)), pos.getY() + 0.5 + random.nextFloat(), pos.getZ() + 0.5 + (0.5 * ((2 * random.nextFloat()) - 1)), plush);

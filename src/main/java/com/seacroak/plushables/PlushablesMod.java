@@ -18,31 +18,30 @@ import org.slf4j.LoggerFactory;
 
 public class PlushablesMod implements ModInitializer {
 
-    public static final String MOD_ID = "plushables";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-    public static final ItemGroup PLUSHABLES_GROUP = ItemGroupRegistry.createItemGroup();
+  public static final String MOD_ID = "plushables";
+  public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+  public static final ItemGroup PLUSHABLES_GROUP = ItemGroupRegistry.createItemGroup();
 
-    @Override
-    public void onInitialize() {
-        Registry.register(Registries.ITEM_GROUP, GenericUtils.ID("plushables"), PLUSHABLES_GROUP);
-        MidnightConfig.init(MOD_ID, PlushablesConfig.class);
-        PlushablesNetworking.registerServersideClientJoinListener();
+  @Override
+  public void onInitialize() {
+    Registry.register(Registries.ITEM_GROUP, GenericUtils.ID("plushables"), PLUSHABLES_GROUP);
+    MidnightConfig.init(MOD_ID, PlushablesConfig.class);
 
-        MainRegistry.init();
-        SoundRegistry.init();
-        /* Keep this in */
-        new TileRegistry();
+    MainRegistry.init();
+    SoundRegistry.init();
+    /* Keep this in */
+    new TileRegistry();
 
+    PlushablesNetworking.registerServersideClientJoinListener();
+    PayloadTypeRegistry.playS2C().register(ConfigSyncPayload.ID, ConfigSyncPayload.CODEC);
+    PayloadTypeRegistry.playS2C().register(ParticlePayload.ID, ParticlePayload.CODEC);
+    PayloadTypeRegistry.playS2C().register(SoundPayload.ID, SoundPayload.CODEC);
+    PayloadTypeRegistry.playS2C().register(SoundPayloadPlayerless.ID, SoundPayloadPlayerless.CODEC);
 
-        PayloadTypeRegistry.playS2C().register(ConfigSyncPayload.ID, ConfigSyncPayload.CODEC);
-        PayloadTypeRegistry.playC2S().register(ParticlePayload.ID, ParticlePayload.CODEC);
-        PayloadTypeRegistry.playC2S().register(SoundPayload.ID, SoundPayload.CODEC);
-        PayloadTypeRegistry.playC2S().register(SoundPayloadPlayerless.ID, SoundPayloadPlayerless.CODEC);
+//        PlushablesNetworking.registerGlobalSoundPacketReceiverWithPlayer();
+//        PlushablesNetworking.registerGlobalSoundPacketReceiverWithoutPlayer();
+//        PlushablesNetworking.registerGlobalParticlePacketReceiver();
 
-        PlushablesNetworking.registerGlobalSoundPacketReceiverWithPlayer();
-        PlushablesNetworking.registerGlobalSoundPacketReceiverWithoutPlayer();
-        PlushablesNetworking.registerGlobalParticlePacketReceiver();
-
-        LOGGER.info("[Plushables] Finished loading!");
-    }
+    LOGGER.info("[Plushables] Finished loading!");
+  }
 }

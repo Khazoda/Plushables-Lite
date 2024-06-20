@@ -5,7 +5,6 @@ import com.seacroak.plushables.block.BaseInteractablePlushable;
 import com.seacroak.plushables.networking.ParticlePayload;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPayload;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.player.PlayerEntity;
@@ -54,9 +53,9 @@ public class WispBlock extends BaseInteractablePlushable {
 
   @Override
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
-    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_RESONATE, 1f));
+    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundEvents.BLOCK_AMETHYST_BLOCK_RESONATE, 1f));
     ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
-        (player, pos, "minecraft:end_rod", 5, new Vec3d(0, -0.1, 0), 0.1f));
+        (player.getUuid(), pos, ParticleTypes.END_ROD, 5, new Vec3d(0, -0.1, 0), 0.1f));
     return ActionResult.CONSUME;
   }
 

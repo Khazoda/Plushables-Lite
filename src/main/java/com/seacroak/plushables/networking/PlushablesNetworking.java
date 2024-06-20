@@ -32,16 +32,6 @@ public class PlushablesNetworking {
         });
     }
 
-    /* Call this method after sending packet when wanting to play sound */
-    public static void playSoundOnClient(SoundEvent sound, World world, BlockPos pos, float volume, float pitch) {
-        try {
-            Vec3d vec = pos.toCenterPos();
-            world.playSoundAtBlockCenter(BlockPos.ofFloored(vec), sound, SoundCategory.BLOCKS, volume, pitch, true);
-        } catch (Exception e) {
-            System.out.println("Caught log-in animation exception");
-        }
-    }
-
     /* Call this method after sending packet when wanting to spawn particles */
     public static void spawnParticlesOnClient(ParticleEffect particleType, World world, BlockPos pos, int particleCount, Vec3d offset, float spread) {
         try {
@@ -58,6 +48,16 @@ public class PlushablesNetworking {
         }
     }
 
+    /* Call this method clientside after sending packet when wanting to play sound */
+    public static void playSoundOnClient(SoundEvent sound, World world, BlockPos pos, float volume, float pitch) {
+        try {
+            Vec3d vec = pos.toCenterPos();
+            world.playSoundAtBlockCenter(BlockPos.ofFloored(vec), sound, SoundCategory.BLOCKS, volume, pitch, true);
+        } catch (Exception e) {
+            System.out.println("Caught sound exception");
+        }
+    }
+
     /* Receiver WITH Player Data*/
     public static void registerGlobalSoundPacketReceiverWithPlayer() {
         /* Registers global packet receiver in MainRegistry.class */
@@ -65,7 +65,7 @@ public class PlushablesNetworking {
             if (payload.playerUUID() == context.player().getUuid())
                 return;
             context.player().getServer().execute(() -> {
-                SoundPayload.sendPlayerPacketToClients(context.player().getServerWorld(), new SoundPayload(payload.playerUUID(), payload.pos(), payload.soundIdentifier(), payload.pitch()));
+                SoundPayload.sendPlayerPacketToClients(context.player().getServerWorld(), new SoundPayload(payload.playerUUID(), payload.pos(), payload.soundEvent(), payload.pitch()));
             });
         });
     }
@@ -75,7 +75,7 @@ public class PlushablesNetworking {
         /* Registers global packet receiver in MainRegistry.class */
         ServerPlayNetworking.registerGlobalReceiver(SoundPayloadPlayerless.ID, (payload, context) -> {
             context.player().getServer().execute(() -> {
-                SoundPayloadPlayerless.sendNoPlayerPacketToClients(context.player().getServerWorld(), BlockPos.ofFloored(payload.pos()), payload.soundIdentifier(), payload.pitch());
+                SoundPayloadPlayerless.sendNoPlayerPacketToClients(context.player().getServerWorld(), payload);
             });
         });
     }
@@ -87,9 +87,8 @@ public class PlushablesNetworking {
                 return;
             Objects.requireNonNull(context.player().getServer()).execute(() -> {
                 ParticlePayload.sendParticlePacketToClients
-                        (context.player().getServerWorld(), new ParticlePayload(payload.playerUUID(), payload.pos(), payload.particleIdentifier(), payload.particleCount(), payload.offset(), payload.spread()));
+                    (context.player().getServerWorld(), new ParticlePayload(payload.playerUUID(), payload.pos(), payload.particle(), payload.particleCount(), payload.offset(), payload.spread()));
             });
         });
     }
-
 }

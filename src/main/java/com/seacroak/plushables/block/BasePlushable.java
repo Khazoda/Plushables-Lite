@@ -62,10 +62,10 @@ public abstract class BasePlushable extends HorizontalFacingBlock implements Wat
       if (!player.canModifyBlocks()) return ActionResult.CONSUME;
       /* Serverside */
       if (world instanceof ServerWorld serverWorld) {
-        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
-        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
-        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos.toCenterPos(), "minecraft:poof", 5, new Vec3d(0, 0, 0), 0.05f));
-        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos.toCenterPos(), "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
+        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.PLUSHABLE_POP, 1f));
+        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
+        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos, ParticleTypes.POOF, 5, new Vec3d(0, 0, 0), 0.05f));
+        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos, ParticleTypes.POOF, 5, new Vec3d(0, 0, 0), 0.05f));
 
         ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(this)));
         world.updateComparators(pos, this);

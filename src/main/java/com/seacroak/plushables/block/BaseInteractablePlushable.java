@@ -52,10 +52,10 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
       /* Serverside */
       if (!player.canModifyBlocks()) return ActionResult.CONSUME;
       if (world instanceof ServerWorld serverWorld) {
-        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
-        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
-        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player, pos, "minecraft:poof", 5, new Vec3d(0, 0, 0), 0.05f));
-        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player, pos, "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
+        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.PLUSHABLE_POP, 1f));
+        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
+        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos, ParticleTypes.POOF, 5, new Vec3d(0, 0, 0), 0.05f));
+        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos, ParticleTypes.POOF, 5, new Vec3d(0, 0, 0), 0.05f));
 
         ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(this)));
         world.updateComparators(pos, this);
@@ -96,7 +96,7 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
   /* Override these two methods to send specific sound and particle packets */
   /* Every sound/particle used needs to be mirrored to each method */
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
-//    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(playerUUID, pos, SoundRegistry.BUILDER_DING, 1f));
+//    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid()UUID, pos, SoundRegistry.BUILDER_DING, 1f));
 //    ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(playerUUID, pos, "minecraft:poof", 10, new Vec3d(0, 0.5, 0), 0f));
     return ActionResult.CONSUME;
   }

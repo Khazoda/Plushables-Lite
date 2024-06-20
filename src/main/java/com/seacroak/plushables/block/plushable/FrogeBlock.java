@@ -5,7 +5,6 @@ import com.seacroak.plushables.block.BaseInteractablePlushable;
 import com.seacroak.plushables.networking.ParticlePayload;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPayload;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -45,9 +44,9 @@ public class FrogeBlock extends BaseInteractablePlushable {
 
   @Override
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
-    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundEvents.ENTITY_FROG_AMBIENT, 1f));
+    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundEvents.ENTITY_FROG_AMBIENT, 1f));
     ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
-        (player, pos, "minecraft:wax_on", 5, new Vec3d(0, 0, 0), 5f));
+        (player.getUuid(), pos, ParticleTypes.WAX_ON, 5, new Vec3d(0, 0, 0), 5f));
     return ActionResult.CONSUME;
   }
 
