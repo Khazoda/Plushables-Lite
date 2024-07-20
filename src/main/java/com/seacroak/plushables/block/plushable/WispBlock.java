@@ -29,7 +29,7 @@ import java.util.List;
 public class WispBlock extends BaseInteractablePlushable {
 
   public WispBlock() {
-    super(Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(value -> 14).pistonBehavior(PistonBehavior.DESTROY));
+    super(Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.02f).nonOpaque().luminance(value -> 14).pistonBehavior(PistonBehavior.DESTROY));
   }
 
   public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {

@@ -28,7 +28,7 @@ import java.util.List;
 public class FrogeBlock extends BaseInteractablePlushable {
 
   public FrogeBlock() {
-    super(Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(value -> 8).pistonBehavior(PistonBehavior.DESTROY));
+    super(Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.02f).nonOpaque().luminance(value -> 8).pistonBehavior(PistonBehavior.DESTROY));
     this.cooldownPeriod = 30;
   }
   @Override

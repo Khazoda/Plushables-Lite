@@ -1,22 +1,16 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.networking.ParticlePayload;
 import com.seacroak.plushables.networking.PlushablesNetworking;
-import com.seacroak.plushables.networking.SoundPayload;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -38,7 +32,7 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(WATERLOGGED,false).with(ON_COOLDOWN, false));
   }
 
-  // Shift Right Click pickup code
+  // Right click interaction cooldown code
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
     if (!player.isSneaking()) {
@@ -47,29 +41,6 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
       world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
       if (world instanceof ServerWorld serverWorld) return this.serverSendEffectPackets(serverWorld, player, pos);
       if (world.isClient) return this.clientRunEffects(world, pos);
-    }
-    if (player.isSneaking()) {
-      /* Serverside */
-      if (!player.canModifyBlocks()) return ActionResult.CONSUME;
-      if (world instanceof ServerWorld serverWorld) {
-        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.PLUSHABLE_POP, 1f));
-        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
-        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos, ParticleTypes.POOF, 5, new Vec3d(0, 0, 0), 0.05f));
-        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos, ParticleTypes.POOF, 5, new Vec3d(0, 0, 0), 0.05f));
-
-        ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(this)));
-        world.updateComparators(pos, this);
-        world.removeBlock(pos, false);
-        return ActionResult.CONSUME;
-
-        /* Clientside */
-      } else if (world.isClient) {
-        PlushablesNetworking.playSoundOnClient(SoundRegistry.PLUSHABLE_POP, world, pos, 1f, 1f);
-        PlushablesNetworking.playSoundOnClient(SoundEvents.BLOCK_WOOL_HIT, world, pos, 1f, 1f);
-        PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.POOF, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
-        PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
-        return ActionResult.SUCCESS;
-      }
     }
     return ActionResult.PASS;
   }

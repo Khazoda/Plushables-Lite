@@ -1,10 +1,6 @@
 package com.seacroak.plushables.block;
 
 import com.mojang.serialization.MapCodec;
-import com.seacroak.plushables.networking.ParticlePayload;
-import com.seacroak.plushables.networking.PlushablesNetworking;
-import com.seacroak.plushables.networking.SoundPayload;
-import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
@@ -12,21 +8,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -37,7 +25,7 @@ import java.util.Random;
 
 public abstract class BasePlushable extends HorizontalFacingBlock implements Waterloggable {
   public static Random rand;
-  public static final Settings defaultSettings = Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().pistonBehavior(PistonBehavior.DESTROY);
+  public static final Settings defaultSettings = Settings.create().sounds(BlockSoundGroup.WOOL).strength(0.02f).nonOpaque().pistonBehavior(PistonBehavior.DESTROY);
   public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
   //  Constructors
@@ -49,39 +37,8 @@ public abstract class BasePlushable extends HorizontalFacingBlock implements Wat
 
   public BasePlushable() {
     super(defaultSettings);
-    setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(WATERLOGGED,false));
+    setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(WATERLOGGED, false));
     rand = new Random();
-  }
-
-
-  // Shift Right Click pickup code
-  @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-
-    if (player.isSneaking()) {
-      if (!player.canModifyBlocks()) return ActionResult.CONSUME;
-      /* Serverside */
-      if (world instanceof ServerWorld serverWorld) {
-        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.PLUSHABLE_POP, 1f));
-        SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
-        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos, ParticleTypes.POOF, 5, new Vec3d(0, 0, 0), 0.05f));
-        ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload(player.getUuid(), pos, ParticleTypes.POOF, 5, new Vec3d(0, 0, 0), 0.05f));
-
-        ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(this)));
-        world.updateComparators(pos, this);
-        world.removeBlock(pos, false);
-        return ActionResult.CONSUME;
-
-        /* Clientside */
-      } else if (world.isClient) {
-        PlushablesNetworking.playSoundOnClient(SoundRegistry.PLUSHABLE_POP, world, pos, 1f, 1f);
-        PlushablesNetworking.playSoundOnClient(SoundEvents.BLOCK_WOOL_HIT, world, pos, 1f, 1f);
-        PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.POOF, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
-        PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
-        return ActionResult.SUCCESS;
-      }
-    }
-    return ActionResult.PASS;
   }
 
   // Custom breaking particle code
@@ -92,8 +49,12 @@ public abstract class BasePlushable extends HorizontalFacingBlock implements Wat
         world.addParticle(ParticleTypes.POOF, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
         world.addParticle(ParticleTypes.GLOW, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
       }
+    } else {
+      world.addParticle(ParticleTypes.POOF, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
+      world.addParticle(ParticleTypes.GLOW, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
     }
     world.addParticle(ParticleTypes.FIREWORK, true, pos.getX(), pos.getY(), pos.getZ(), 0.1, 0.1, 0.1);
+
     super.onBreak(world, pos, state, player);
     return state;
   }
