@@ -23,7 +23,7 @@ public class PlushablesAdvancements implements Consumer<Consumer<AdvancementEntr
             MainRegistry.PENGUIN_PLUSHABLE,
             Text.translatable("advancement.plushables.root.title"),
             Text.translatable("advancement.plushables.root.description"),
-            new Identifier("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
+            Identifier.of("textures/gui/advancements/backgrounds/adventure.png"), // Background image used
             AdvancementFrame.TASK, // Options: TASK, CHALLENGE, GOAL
             false, // Show toast top right
             false, // Announce to chat
@@ -45,7 +45,7 @@ public class PlushablesAdvancements implements Consumer<Consumer<AdvancementEntr
             false // Hidden in the advancement tab
         )
         // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
-        .criterion("got_copper_ingot", InventoryChangedCriterion.Conditions.items(Items.COPPER_INGOT))
+        .criterion("got_copper_ingot", InventoryChangedCriterion.Conditions.items(Items.BEDROCK))
         .rewards(AdvancementRewards.Builder.recipe(GenericUtils.ID("builder_block")))
         .build(advancementConsumer, "plushables" + "/got_copper_ingot");
 
@@ -77,7 +77,7 @@ public class PlushablesAdvancements implements Consumer<Consumer<AdvancementEntr
             false // Hidden in the advancement tab
         )
         // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
-        .criterion("got_builder", InventoryChangedCriterion.Conditions.items(MainRegistry.PENGUIN_PLUSHABLE))
+        .criterion("got_builder", InventoryChangedCriterion.Conditions.items(Items.BEDROCK))
         .rewards(AdvancementRewards.Builder.recipe(GenericUtils.ID("heart_of_gold")).addRecipe(GenericUtils.ID("powered_heart")))
         .build(advancementConsumer, "plushables" + "/got_builder");
 

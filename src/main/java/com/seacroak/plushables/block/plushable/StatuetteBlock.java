@@ -33,11 +33,11 @@ public class StatuetteBlock extends BaseInteractablePlushable {
 
   @Override
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
-    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.STATUETTE, 1f));
+    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.STATUETTE, 1f));
     ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
-        (player, pos, "minecraft:note", 1, new Vec3d(0, 0.5, 0), 0f));
+        (player.getUuid(), pos, ParticleTypes.NOTE, 1, new Vec3d(0, 0.5, 0), 0f));
     ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
-        (player, pos, "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
+        (player.getUuid(), pos, ParticleTypes.GLOW, 5, new Vec3d(0, 0, 0), 0.05f));
     return ActionResult.CONSUME;
   }
 

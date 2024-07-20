@@ -71,7 +71,7 @@
   "item.plushables.codex.tooltip": "§7Can be placed in bookshelves & on the ground",
   "item.plushables.codex.builder_recipe": "Builder Recipe",
 
-  "advancement.plushables.root.title": "Plushables §oLite§r [Codex Disabled]",
+  "advancement.plushables.root.title": "Plushables §oLite§r",
   "advancement.plushables.root.description": "Live, Laugh, Plush",
   "advancement.plushables.got_copper_ingot.title": "[Builder Recipe Disabled]",
   "advancement.plushables.got_copper_ingot.description": "Copper ingots have a new use",

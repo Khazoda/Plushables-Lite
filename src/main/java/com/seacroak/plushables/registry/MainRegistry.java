@@ -16,7 +16,7 @@ import net.minecraft.registry.entry.RegistryEntry;
 public final class MainRegistry {
   /* Item Settings */
   static final Item.Settings defaultItemSettings = new Item.Settings().maxCount(64);
-  static final Item.Settings plushableItemSettings = new Item.Settings().maxCount(8).equipmentSlot(stack -> EquipmentSlot.HEAD);
+  static final Item.Settings plushableItemSettings = new Item.Settings().maxCount(8).equipmentSlot((stack, regWrapper) -> EquipmentSlot.HEAD);
   static final Item.Settings unstackableItemSettings = new Item.Settings().maxCount(1);
 
   /* Standard Blocks */
@@ -29,7 +29,7 @@ public final class MainRegistry {
 
   /* Plushables Codex */
   public static final Block CODEX_BLOCK = registerBlockOnly("codex", new CodexBlock());
-  public static final BlockItem CODEX_ITEM = registerBlockItem("codex", new CodexItem(CODEX_BLOCK,unstackableItemSettings));
+  public static final BlockItem CODEX_ITEM = registerBlockItem("codex", new CodexItem(CODEX_BLOCK, unstackableItemSettings));
 
 
   /* Complex Plushables */

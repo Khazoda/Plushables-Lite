@@ -3,12 +3,12 @@ package com.seacroak.plushables.item;
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.BasePlushable;
 import net.minecraft.block.Block;
-import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class CodexItem extends BlockItem {
 
-  public CodexItem(Block block, Item.Settings settings) {
+  public CodexItem(Block block, Settings settings) {
     super(block, settings);
   }
 
@@ -30,7 +30,7 @@ public class CodexItem extends BlockItem {
     PlayerEntity player = context.getPlayer();
     if (!player.isSneaking()) {
       if (player instanceof ServerPlayerEntity sp) {
-//        PatchouliAPI.get().openBookGUI(sp, new Identifier("plushables:codex"));
+//        PatchouliAPI.get().openBookGUI(sp, Identifier.of("plushables:codex"));
         return ActionResult.SUCCESS;
       }
     } else {
@@ -59,7 +59,7 @@ public class CodexItem extends BlockItem {
   }
 
   @Override
-  public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+  public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
     tooltip.add(Text.translatable("item." + PlushablesMod.MOD_ID + ".codex.tooltip"));
     tooltip.add(Text.translatable("item." + PlushablesMod.MOD_ID + ".codex.broken"));
     super.appendTooltip(stack, context, tooltip, type);

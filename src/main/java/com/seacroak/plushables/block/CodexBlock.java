@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 public class CodexBlock extends HorizontalFacingBlock {
 
   public CodexBlock() {
-    super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.CHISELED_BOOKSHELF).strength(0.25f).nonOpaque());
+    super(Settings.create().sounds(BlockSoundGroup.CHISELED_BOOKSHELF).strength(0.25f).nonOpaque());
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
   }
 

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "plushables:penguin_plushable"
+            "items": "minecraft:bedrock"
           }
         ]
       },

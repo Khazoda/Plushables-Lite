@@ -31,11 +31,11 @@ public class GoldfishBlock extends BaseInteractablePlushable {
 
   @Override
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
-    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player, pos, SoundRegistry.GOLDFISH, 1f));
+    SoundPayload.sendPlayerPacketToClients(serverWorld, new SoundPayload(player.getUuid(), pos, SoundRegistry.GOLDFISH, 1f));
     ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
-        (player, pos, "minecraft:dolphin", 15, new Vec3d(0, 0.15, 0), 0.05f));
+        (player.getUuid(), pos, ParticleTypes.DOLPHIN, 15, new Vec3d(0, 0.15, 0), 0.05f));
     ParticlePayload.sendParticlePacketToClients(serverWorld, new ParticlePayload
-        (player, pos, "minecraft:fishing", 15, new Vec3d(0, 0.15, 0), 0.05f));
+        (player.getUuid(), pos, ParticleTypes.FISHING, 15, new Vec3d(0, 0.15, 0), 0.05f));
     return ActionResult.CONSUME;
   }
 
